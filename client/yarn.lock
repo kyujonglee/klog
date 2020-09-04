@@ -1973,6 +1973,13 @@
     "@types/history" "*"
     "@types/react" "*"
 
+"@types/react-icons@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@types/react-icons/-/react-icons-3.0.0.tgz#27ca2823a6add881d06a371bfff093afc1b9c829"
+  integrity sha512-Vefs6LkLqF61vfV7AiAqls+vpR94q67gunhMueDznG+msAkrYgRxl7gYjNem/kZ+as2l2mNChmF1jRZzzQQtMg==
+  dependencies:
+    react-icons "*"
+
 "@types/react-native@*":
   version "0.63.14"
   resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.63.14.tgz#f15b5c686a2426d7f8189b5cc249c952b335c1eb"
@@ -11367,7 +11374,7 @@ react-hot-loader@^4.12.21:
     shallowequal "^1.1.0"
     source-map "^0.7.3"
 
-react-icons@^3.0.1:
+react-icons@*, react-icons@^3.0.1, react-icons@^3.11.0:
   version "3.11.0"
   resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-3.11.0.tgz#2ca2903dfab8268ca18ebd8cc2e879921ec3b254"
   integrity sha512-JRgiI/vdF6uyBgyZhVyYJUZAop95Sy4XDe/jmT3R/bKliFWpO/uZBwvSjWEdxwzec7SYbEPNPck0Kff2tUGM2Q==
