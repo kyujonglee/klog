@@ -5,6 +5,7 @@ export default createGlobalStyle`
     ${reset}
     body {
         background-color: ${props => props.theme.colors.bgColor};
+        font-family: Roboto Open Sans;
     }
     * {
         box-sizing: border-box;
