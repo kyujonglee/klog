@@ -70,7 +70,7 @@ function Navbar() {
         </HomePageName>
         <LinkList>
           {links.map(link => (
-            <LinkItem>{link}</LinkItem>
+            <LinkItem key={link.id}>{link.title}</LinkItem>
           ))}
         </LinkList>
         <MenuIcon />
