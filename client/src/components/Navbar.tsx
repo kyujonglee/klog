@@ -4,10 +4,17 @@ import { FcWorkflow } from "react-icons/fc"
 import { FiMenu } from "react-icons/fi"
 import links from "../constants/link"
 
-const Container = styled.nav`
+const Container = styled.div`
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background-color: transparent;
+`
+const Nav = styled.nav`
   margin: 0 auto;
   width: 90vw;
-  background-color: transparent;
   max-width: 1170px;
   height: 7vh;
   display: flex;
@@ -56,16 +63,18 @@ const MenuIcon = styled(FiMenu)`
 function Navbar() {
   return (
     <Container>
-      <HomePageName>
-        <FcWorkflow />
-        klog<SubHomePageName>.</SubHomePageName>
-      </HomePageName>
-      <LinkList>
-        {links.map(link => (
-          <LinkItem>{link}</LinkItem>
-        ))}
-      </LinkList>
-      <MenuIcon />
+      <Nav>
+        <HomePageName>
+          <FcWorkflow />
+          klog<SubHomePageName>.</SubHomePageName>
+        </HomePageName>
+        <LinkList>
+          {links.map(link => (
+            <LinkItem>{link}</LinkItem>
+          ))}
+        </LinkList>
+        <MenuIcon />
+      </Nav>
     </Container>
   )
 }
