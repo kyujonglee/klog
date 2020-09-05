@@ -1,8 +1,9 @@
 const links: LinkData[] = [
-  { id: 0, title: "home" },
-  { id: 1, title: "about" },
-  { id: 2, title: "projects" },
-  { id: 3, title: "blog" },
+  { id: 1, title: "home" },
+  { id: 2, title: "about" },
+  { id: 3, title: "projects" },
+  { id: 4, title: "blog" },
+  { id: 5, title: "contact" },
 ]
 
 export default links
