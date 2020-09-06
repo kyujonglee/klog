@@ -15,8 +15,6 @@ const Container = styled.section`
   justify-content: space-around;
   ${phoneMediaQuery(
     css`
-      flex-direction: column-reverse;
-      justify-content: flex-end;
       padding-top: 10vh;
     `
   )}
@@ -85,6 +83,7 @@ const Content = styled.span`
 const NameContainer = styled.div`
   display: flex;
   align-items: center;
+  margin-top: 0.5rem;
 `
 const Line = styled.div`
   width: 50px;
@@ -110,7 +109,7 @@ function About() {
         <AboutContent>
           <NameContainer>
             <Line />
-            <Name>{nodes[0].siteMetadata?.author}</Name>
+            <Name>{nodes[0]?.siteMetadata?.author}</Name>
           </NameContainer>
           <Title>🔥 Web Frontend 개발자.</Title>
           <Content>공부하는 걸 좋아하며 꾸준히 하려고 합니다</Content>
