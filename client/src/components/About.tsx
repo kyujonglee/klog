@@ -82,13 +82,36 @@ const Content = styled.span`
     `
   )}
 `
+const NameContainer = styled.div`
+  display: flex;
+  align-items: center;
+`
+const Line = styled.div`
+  width: 50px;
+  height: 3px;
+  background-color: ${props => props.theme.colors.purple};
+  margin-right: 1rem;
+`
+const Name = styled.span`
+  color: ${props => props.theme.colors.purple};
+  text-transform: capitalize;
+  font-size: 1.25rem;
+  font-weight: 600;
+`
 
 function About() {
-  const { image } = useStaticQuery(query)
+  const {
+    image,
+    site: { nodes },
+  } = useStaticQuery(query)
   return (
     <>
       <Container>
         <AboutContent>
+          <NameContainer>
+            <Line />
+            <Name>{nodes[0].siteMetadata?.author}</Name>
+          </NameContainer>
           <Title>🔥 Web Frontend 개발자.</Title>
           <Content>공부하는 걸 좋아하며 꾸준히 하려고 합니다</Content>
           <Content>
@@ -115,6 +138,13 @@ const query = graphql`
       childImageSharp {
         fluid(maxWidth: 800) {
           ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    site: allSite {
+      nodes {
+        siteMetadata {
+          author
         }
       }
     }
