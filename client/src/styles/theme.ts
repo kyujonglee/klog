@@ -9,6 +9,8 @@ const theme: DefaultTheme = {
     purple: "#6C4EF4",
     darkBlue: "#070711",
     gray: "#4C4B5C",
+    orange: "#FF6B01",
+    liteOrange: "#FED5B3",
   },
 } as const
 

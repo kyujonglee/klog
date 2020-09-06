@@ -1,11 +1,12 @@
 import React from "react"
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import SocialLinks from "./SocialLinks"
 import { graphql, useStaticQuery } from "gatsby"
+import { phoneMediaQuery } from "../styles/responsive"
 
 const Container = styled.footer`
   width: 100%;
-  padding: 2rem;
+  height: 15vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -17,6 +18,10 @@ const Text = styled.span`
   margin-top: 0.5rem;
   font-size: 1.25rem;
   letter-spacing: 2px;
+  text-align: center;
+  ${phoneMediaQuery(css`
+    font-size: 1rem;
+  `)}
 `
 const SiteTitle = styled.b`
   color: ${props => props.theme.colors.blue};
@@ -30,7 +35,7 @@ function Footer() {
     <Container>
       <SocialLinks />
       <Text>
-        copyright©2020 <SiteTitle>{nodes[0]?.siteMetadata?.title}</SiteTitle>
+        copyright©2020 <SiteTitle>{nodes[0]?.siteMetadata?.title}</SiteTitle>{" "}
         all right reserved
       </Text>
     </Container>

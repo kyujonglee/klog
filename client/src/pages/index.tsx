@@ -3,7 +3,7 @@ import { PageProps } from "gatsby"
 import Layout from "../template/Layout"
 import About from "../components/About"
 
-function IndexPage(props: PageProps) {
+function Home(props: PageProps) {
   return (
     <Layout>
       <About />
@@ -11,4 +11,4 @@ function IndexPage(props: PageProps) {
   )
 }
 
-export default IndexPage
+export default Home

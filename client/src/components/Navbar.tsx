@@ -4,6 +4,7 @@ import { FcWorkflow } from "react-icons/fc"
 import { FiMenu } from "react-icons/fi"
 import links from "../constants/link"
 import { phoneMediaQuery } from "../styles/responsive"
+import { Link } from "gatsby"
 
 const Container = styled.div`
   width: 100%;
@@ -75,7 +76,9 @@ function Navbar() {
         </HomePageName>
         <LinkList>
           {links.map(link => (
-            <LinkItem key={link.id}>{link.title}</LinkItem>
+            <LinkItem key={link.id}>
+              <Link to={link.url}>{link.title}</Link>
+            </LinkItem>
           ))}
         </LinkList>
         <MenuIcon />

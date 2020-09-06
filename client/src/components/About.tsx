@@ -13,11 +13,9 @@ const Container = styled.section`
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-around;
-  ${phoneMediaQuery(
-    css`
-      padding-top: 10vh;
-    `
-  )}
+  ${phoneMediaQuery(css`
+    padding-top: 10vh;
+  `)}
 `
 const Background = styled.div`
   width: 100%;
@@ -32,19 +30,15 @@ const Background = styled.div`
     background: ${props => props.theme.colors.purple};
     opacity: 0.125;
   }
-  ${phoneMediaQuery(
-    css`
-      display: none;
-    `
-  )}
+  ${phoneMediaQuery(css`
+    display: none;
+  `)}
 `
 const AboutImage = styled.div`
   width: 40%;
-  ${phoneMediaQuery(
-    css`
-      width: 100%;
-    `
-  )}
+  ${phoneMediaQuery(css`
+    width: 100%;
+  `)}
 `
 const AboutContent = styled.div`
   width: 50%;
@@ -52,11 +46,9 @@ const AboutContent = styled.div`
   flex-direction: column;
   justify-content: center;
   padding-top: 1rem;
-  ${phoneMediaQuery(
-    css`
-      width: 100%;
-    `
-  )}
+  ${phoneMediaQuery(css`
+    width: 100%;
+  `)}
 `
 const Title = styled.h2`
   color: ${props => props.theme.colors.title};
@@ -64,21 +56,17 @@ const Title = styled.h2`
   font-size: 2.5rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
-  ${phoneMediaQuery(
-    css`
-      font-size: 2rem;
-    `
-  )}
+  ${phoneMediaQuery(css`
+    font-size: 2rem;
+  `)}
 `
 const Content = styled.span`
   color: ${props => props.theme.colors.text};
   font-size: 1.25rem;
   margin-bottom: 0.5rem;
-  ${phoneMediaQuery(
-    css`
-      font-size: 1rem;
-    `
-  )}
+  ${phoneMediaQuery(css`
+    font-size: 1rem;
+  `)}
 `
 const NameContainer = styled.div`
   display: flex;
