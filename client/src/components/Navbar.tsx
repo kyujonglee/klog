@@ -65,8 +65,11 @@ const MenuIcon = styled(FiMenu)`
     `
   )}
 `
+interface INavbarProps {
+  clickSideMenu: () => void
+}
 
-function Navbar() {
+function Navbar({ clickSideMenu }: INavbarProps) {
   return (
     <Container>
       <Nav>
@@ -81,7 +84,7 @@ function Navbar() {
             </LinkItem>
           ))}
         </LinkList>
-        <MenuIcon />
+        <MenuIcon onClick={clickSideMenu} />
       </Nav>
     </Container>
   )

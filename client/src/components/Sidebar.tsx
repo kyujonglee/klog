@@ -5,7 +5,7 @@ import links from "../constants/link"
 import { Link } from "gatsby"
 import SocialLinks from "./SocialLinks"
 
-const Side = styled.aside`
+const Side = styled.aside<{ showSidebar: boolean }>`
   position: fixed;
   top: 0;
   left: 0;
@@ -16,7 +16,15 @@ const Side = styled.aside`
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  /* transform: translateX(-100%); */
+  ${props =>
+    props.showSidebar
+      ? css`
+          transform: translateX(0%);
+        `
+      : css`
+          transform: translateX(-100%);
+        `}
+  transition: transform 0.2s ease-in-out;
 `
 const SCancel = styled(GiCancel)`
   align-self: flex-end;
@@ -51,10 +59,15 @@ const SocialLinkCss = css`
   color: ${props => props.theme.colors.gray};
 `
 
-function Sidebar() {
+interface ISidebarProps {
+  showSidebar: boolean
+  clickSideMenu: () => void
+}
+
+function Sidebar({ showSidebar, clickSideMenu }: ISidebarProps) {
   return (
-    <Side>
-      <SCancel />
+    <Side showSidebar={showSidebar}>
+      <SCancel onClick={clickSideMenu} />
       <Menu>
         {links.map(link => (
           <Link to={link.url} key={link.id}>
