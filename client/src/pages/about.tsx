@@ -18,11 +18,12 @@ const AboutContainer = styled.section`
   flex-wrap: wrap;
   padding-bottom: 1rem;
   ${phoneMediaQuery(css`
-    padding-top: 10vh;
+    padding-top: 11vh;
   `)}
 `
 const AboutImage = styled.div`
   width: 40%;
+  margin-bottom: 1rem;
   ${phoneMediaQuery(css`
     width: 100%;
   `)}
