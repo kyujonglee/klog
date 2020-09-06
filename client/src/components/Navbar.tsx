@@ -73,10 +73,12 @@ function Navbar({ clickSideMenu }: INavbarProps) {
   return (
     <Container>
       <Nav>
-        <HomePageName>
-          <FcWorkflow />
-          klog<SubHomePageName>.</SubHomePageName>
-        </HomePageName>
+        <Link to="/">
+          <HomePageName>
+            <FcWorkflow />
+            klog<SubHomePageName>.</SubHomePageName>
+          </HomePageName>
+        </Link>
         <LinkList>
           {links.map(link => (
             <LinkItem key={link.id}>
