@@ -1,6 +1,7 @@
 ## 할 일
 
 - [ ] sidebar 만들기
+- [ ] fadeInUp 효과
 - [ ] project component
 - [ ] project page
 - [ ] project api
