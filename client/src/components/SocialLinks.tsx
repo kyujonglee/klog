@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { socialLinks } from "../constants/sns"
-import SocialLink from "./socialLink"
+import SocialLink from "./SocialLink"
 
 const List = styled.ul`
   display: flex;
