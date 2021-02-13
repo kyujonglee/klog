@@ -4,6 +4,36 @@ import SocialLinks from "./SocialLinks"
 import { graphql, useStaticQuery } from "gatsby"
 import { phoneMediaQuery } from "../styles/responsive"
 
+function Footer() {
+  const {
+    site: { nodes },
+  } = useStaticQuery(query)
+  
+  return (
+    <Container>
+      <SocialLinks />
+      <Text>
+        Copyright©2021 <SiteTitle>{nodes[0]?.siteMetadata?.title}</SiteTitle>{" "}
+        all right reserved
+      </Text>
+    </Container>
+  )
+}
+
+const query = graphql`
+  query {
+    site: allSite {
+      nodes {
+        siteMetadata {
+          title
+        }
+      }
+    }
+  }
+`
+
+export default Footer
+
 const Container = styled.footer`
   width: 100%;
   height: 15vh;
@@ -26,32 +56,3 @@ const Text = styled.span`
 const SiteTitle = styled.b`
   color: ${props => props.theme.colors.blue};
 `
-
-function Footer() {
-  const {
-    site: { nodes },
-  } = useStaticQuery(query)
-  return (
-    <Container>
-      <SocialLinks />
-      <Text>
-        copyright©2020 <SiteTitle>{nodes[0]?.siteMetadata?.title}</SiteTitle>{" "}
-        all right reserved
-      </Text>
-    </Container>
-  )
-}
-
-const query = graphql`
-  query {
-    site: allSite {
-      nodes {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  }
-`
-
-export default Footer
