@@ -13,9 +13,7 @@ const SLink = styled.a`
   `)}
 `
 
-interface ISocialLinkProps extends ISocialLink {}
-
-function SocialLink({ url, icon, id }: ISocialLinkProps) {
+function SocialLink({ url, icon }: Omit<ISocialLink, "id">) {
   return (
     <li>
       <SLink href={url} target="_blank">

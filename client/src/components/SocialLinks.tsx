@@ -19,7 +19,6 @@ function SocialLinks({ styling }: { styling?: CSSProp }) {
           key={link.id}
           icon={link.icon}
           url={link.url}
-          id={link.id}
         />
       ))}
     </List>
