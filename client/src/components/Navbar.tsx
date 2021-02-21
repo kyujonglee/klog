@@ -5,6 +5,7 @@ import { FiMenu } from "react-icons/fi"
 import links from "../constants/link"
 import { phoneMediaQuery } from "../styles/responsive"
 import { Link } from "gatsby"
+import { useLocation } from "@reach/router"
 
 const Container = styled.div`
   width: 100%;
@@ -44,11 +45,12 @@ const LinkList = styled.ul`
     `
   )}
 `
-const LinkItem = styled.li`
+const LinkItem = styled.li<{ isSelected: boolean }>`
   cursor: pointer;
   font-size: 1.25rem;
   font-weight: 500;
-  color: ${props => props.theme.colors.text};
+  color: ${props =>
+    props.isSelected ? props.theme.colors.purple : props.theme.colors.text};
   transition: color 0.3s linear;
   &:hover {
     color: ${props => props.theme.colors.blue};
@@ -70,6 +72,7 @@ interface INavbarProps {
 }
 
 function Navbar({ clickSideMenu }: INavbarProps) {
+  const location = useLocation()
   return (
     <Container>
       <Nav>
@@ -81,7 +84,7 @@ function Navbar({ clickSideMenu }: INavbarProps) {
         </Link>
         <LinkList>
           {links.map(link => (
-            <LinkItem key={link.id}>
+            <LinkItem key={link.id} isSelected={location.pathname === link.url}>
               <Link to={link.url}>{link.title}</Link>
             </LinkItem>
           ))}

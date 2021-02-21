@@ -8,7 +8,7 @@ function Footer() {
   const {
     site: { nodes },
   } = useStaticQuery(query)
-  
+
   return (
     <Container>
       <SocialLinks />
@@ -32,7 +32,7 @@ const query = graphql`
   }
 `
 
-export default Footer
+export default React.memo(Footer)
 
 const Container = styled.footer`
   width: 100%;
