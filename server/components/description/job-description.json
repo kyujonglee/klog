@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_description_job_descriptions",
+  "info": {
+    "name": "job_description",
+    "icon": "align-justify"
+  },
+  "options": {},
+  "attributes": {
+    "content": {
+      "type": "text"
+    }
+  }
+}
