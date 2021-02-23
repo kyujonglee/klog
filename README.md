@@ -1,6 +1,7 @@
 ## 할 일
 
 - [x] sidebar 만들기
+- [ ] experience 추가하기
 - [ ] fadeInUp 효과
 - [ ] strapi about API
 - [ ] project component
