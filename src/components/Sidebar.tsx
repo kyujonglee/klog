@@ -5,6 +5,31 @@ import links from "../constants/link"
 import { Link } from "gatsby"
 import SocialLinks from "./SocialLinks"
 
+interface ISidebarProps {
+  showSidebar: boolean
+  clickSideMenu: () => void
+}
+
+function Sidebar({ showSidebar, clickSideMenu }: ISidebarProps) {
+  return (
+    <Side showSidebar={showSidebar}>
+      <SCancel onClick={clickSideMenu} />
+      <Menu>
+        {links.map(link => (
+          <Link to={link.url} key={link.id}>
+            <MenuItem>
+              {link.icon} <MenuTitle>{link.title}</MenuTitle>
+            </MenuItem>
+          </Link>
+        ))}
+      </Menu>
+      <SocialLinks styling={SocialLinkCss} />
+    </Side>
+  )
+}
+
+export default Sidebar
+
 const Side = styled.aside<{ showSidebar: boolean }>`
   position: fixed;
   top: 0;
@@ -58,28 +83,3 @@ const SocialLinkCss = css`
   justify-content: center;
   color: ${props => props.theme.colors.gray};
 `
-
-interface ISidebarProps {
-  showSidebar: boolean
-  clickSideMenu: () => void
-}
-
-function Sidebar({ showSidebar, clickSideMenu }: ISidebarProps) {
-  return (
-    <Side showSidebar={showSidebar}>
-      <SCancel onClick={clickSideMenu} />
-      <Menu>
-        {links.map(link => (
-          <Link to={link.url} key={link.id}>
-            <MenuItem>
-              {link.icon} <MenuTitle>{link.title}</MenuTitle>
-            </MenuItem>
-          </Link>
-        ))}
-      </Menu>
-      <SocialLinks styling={SocialLinkCss} />
-    </Side>
-  )
-}
-
-export default Sidebar

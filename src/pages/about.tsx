@@ -2,7 +2,7 @@ import React from "react"
 import styled, { css } from "styled-components"
 import Img from "gatsby-image"
 import Layout from "../template/Layout"
-import { graphql, PageProps, useStaticQuery } from "gatsby"
+import { graphql } from "gatsby"
 import { phoneMediaQuery } from "../styles/responsive"
 import Stack from "../components/Stack"
 

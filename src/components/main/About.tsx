@@ -2,24 +2,79 @@ import React from "react"
 import styled, { css } from "styled-components"
 import { graphql, useStaticQuery } from "gatsby"
 import Img from "gatsby-image"
-import { phoneMediaQuery } from "../styles/responsive"
+import { phoneMediaQuery } from "../../styles/responsive"
+
+function About() {
+  const {
+    image,
+    site: { nodes },
+  } = useStaticQuery(query)
+  return (
+    <>
+      <Container>
+        <AboutContent>
+          <NameContainer>
+            <Line />
+            <Name>{nodes[0]?.siteMetadata?.author}</Name>
+          </NameContainer>
+          <Title>🔥 Web Frontend 개발자.</Title>
+          <Content>공부하는 걸 좋아하며 꾸준히 하려고 합니다</Content>
+          <Content>
+            긍정적인 성격을 갖고 있으며 다른 사람들과 협업을 잘하는 편입니다{" "}
+          </Content>
+        </AboutContent>
+        <AboutImage>
+          <Img
+            style={{ borderRadius: "10px" }}
+            fluid={image.childImageSharp.fluid}
+          />
+        </AboutImage>
+      </Container>
+      <Background>
+        <div />
+      </Background>
+    </>
+  )
+}
+
+const query = graphql`
+  query {
+    image: file(relativePath: { eq: "background.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 800) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    site: allSite {
+      nodes {
+        siteMetadata {
+          author
+        }
+      }
+    }
+  }
+`
+
+export default About
 
 const Container = styled.section`
   width: 90vw;
   max-width: 1170px;
   margin: 0 auto;
-  height: 100vh;
+  height: 70vh;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-around;
   ${phoneMediaQuery(css`
     padding-top: 10vh;
+    height: 95vh;
   `)}
 `
 const Background = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 70vh;
   position: absolute;
   top: 0;
   left: 0;
@@ -85,57 +140,3 @@ const Name = styled.span`
   font-size: 1.25rem;
   font-weight: 600;
 `
-
-function About() {
-  const {
-    image,
-    site: { nodes },
-  } = useStaticQuery(query)
-  return (
-    <>
-      <Container>
-        <AboutContent>
-          <NameContainer>
-            <Line />
-            <Name>{nodes[0]?.siteMetadata?.author}</Name>
-          </NameContainer>
-          <Title>🔥 Web Frontend 개발자.</Title>
-          <Content>공부하는 걸 좋아하며 꾸준히 하려고 합니다</Content>
-          <Content>
-            긍정적인 성격을 갖고 있으며 다른 사람들과 협업을 잘하는 편입니다{" "}
-          </Content>
-        </AboutContent>
-        <AboutImage>
-          <Img
-            style={{ borderRadius: "10px" }}
-            fluid={image.childImageSharp.fluid}
-          />
-        </AboutImage>
-      </Container>
-      <Background>
-        <div></div>
-      </Background>
-    </>
-  )
-}
-
-const query = graphql`
-  query {
-    image: file(relativePath: { eq: "background.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 800) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    site: allSite {
-      nodes {
-        siteMetadata {
-          author
-        }
-      }
-    }
-  }
-`
-
-export default About

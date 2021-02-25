@@ -7,6 +7,36 @@ import { phoneMediaQuery } from "../styles/responsive"
 import { Link } from "gatsby"
 import { useLocation } from "@reach/router"
 
+interface INavbarProps {
+  clickSideMenu: () => void
+}
+
+function Navbar({ clickSideMenu }: INavbarProps) {
+  const location = useLocation()
+  return (
+    <Container>
+      <Nav>
+        <Link to="/">
+          <HomePageName>
+            <FcWorkflow />
+            klog<SubHomePageName>.</SubHomePageName>
+          </HomePageName>
+        </Link>
+        <LinkList>
+          {links.map(link => (
+            <LinkItem key={link.id} isSelected={location.pathname === link.url}>
+              <Link to={link.url}>{link.title}</Link>
+            </LinkItem>
+          ))}
+        </LinkList>
+        <MenuIcon onClick={clickSideMenu} />
+      </Nav>
+    </Container>
+  )
+}
+
+export default Navbar
+
 const Container = styled.div`
   width: 100%;
   position: absolute;
@@ -67,32 +97,3 @@ const MenuIcon = styled(FiMenu)`
     `
   )}
 `
-interface INavbarProps {
-  clickSideMenu: () => void
-}
-
-function Navbar({ clickSideMenu }: INavbarProps) {
-  const location = useLocation()
-  return (
-    <Container>
-      <Nav>
-        <Link to="/">
-          <HomePageName>
-            <FcWorkflow />
-            klog<SubHomePageName>.</SubHomePageName>
-          </HomePageName>
-        </Link>
-        <LinkList>
-          {links.map(link => (
-            <LinkItem key={link.id} isSelected={location.pathname === link.url}>
-              <Link to={link.url}>{link.title}</Link>
-            </LinkItem>
-          ))}
-        </LinkList>
-        <MenuIcon onClick={clickSideMenu} />
-      </Nav>
-    </Container>
-  )
-}
-
-export default Navbar
