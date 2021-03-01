@@ -13,7 +13,7 @@ function Footer() {
     <Container>
       <SocialLinks />
       <Text>
-        Copyright©2021 <SiteTitle>{nodes[0]?.siteMetadata?.title}</SiteTitle>{" "}
+        Copyright©{new Date().getFullYear()} <SiteTitle>{nodes[0]?.siteMetadata?.title}</SiteTitle>{" "}
         all right reserved
       </Text>
     </Container>
