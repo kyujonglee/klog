@@ -8,6 +8,7 @@ function About() {
   const {
     image,
     site: { nodes },
+    introduce: { nodes: introduces },
   } = useStaticQuery(query)
   return (
     <>
@@ -18,10 +19,7 @@ function About() {
             <Name>{nodes[0]?.siteMetadata?.author}</Name>
           </NameContainer>
           <Title>🔥 Web Frontend 개발자.</Title>
-          <Content>공부하는 걸 좋아하며 꾸준히 하려고 합니다</Content>
-          <Content>
-            긍정적인 성격을 갖고 있으며 다른 사람들과 협업을 잘하는 편입니다{" "}
-          </Content>
+          <Content>{introduces[0].content}</Content>
         </AboutContent>
         <AboutImage>
           <Img
@@ -51,6 +49,12 @@ const query = graphql`
         siteMetadata {
           author
         }
+      }
+    }
+    introduce: allStrapiMainIntroduce {
+      nodes {
+        content
+        strapiId
       }
     }
   }
@@ -122,6 +126,8 @@ const Content = styled.span`
   ${phoneMediaQuery(css`
     font-size: 1rem;
   `)}
+  white-space: pre-wrap;
+  line-height: 1.25;
 `
 const NameContainer = styled.div`
   display: flex;

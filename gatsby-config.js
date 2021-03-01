@@ -39,7 +39,8 @@ module.exports = {
       options: {
         apiURL: process.env.GATSBY_API_URL || "http://localhost:1337",
         queryLimit: 1000, // Default to 100
-        contentTypes: [`jobs`, `stacks`],
+        contentTypes: [`jobs`, `stacks`, `projects`],
+        singleTypes: [`main-introduce`, `about-introduce`],
       },
     },
     {

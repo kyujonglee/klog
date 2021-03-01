@@ -6,6 +6,56 @@ import { graphql } from "gatsby"
 import { phoneMediaQuery } from "../styles/responsive"
 import Stack from "../components/Stack"
 
+function AboutPage({ data: { image, stacks, introduce } }) {
+  return (
+    <Layout>
+      <AboutContainer>
+        <AboutImage>
+          <Img
+            style={{ borderRadius: "10px" }}
+            fluid={image.childImageSharp.fluid}
+          />
+        </AboutImage>
+        <AboutContent>
+          <Title>about me</Title>
+          <Line />
+          <Content>{introduce.nodes[0].content}</Content>
+          <StackWrapper>
+            {stacks.nodes.map(stack => (
+              <Stack key={stack.strapiId}>{stack.name}</Stack>
+            ))}
+          </StackWrapper>
+        </AboutContent>
+      </AboutContainer>
+    </Layout>
+  )
+}
+
+export const query = graphql`
+  query {
+    image: file(relativePath: { eq: "background.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 700) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    stacks: allStrapiStacks {
+      nodes {
+        name
+        strapiId
+      }
+    }
+    introduce: allStrapiAboutIntroduce {
+      nodes {
+        content
+      }
+    }
+  }
+`
+
+export default AboutPage
+
 const AboutContainer = styled.section`
   width: 90vw;
   max-width: 1170px;
@@ -54,6 +104,7 @@ const Content = styled.span`
   display: inline-block;
   margin-bottom: 1rem;
   line-height: 1.5;
+  white-space: pre-wrap;
 `
 const StackWrapper = styled.div`
   display: flex;
@@ -63,55 +114,3 @@ const StackWrapper = styled.div`
     margin-bottom: 0.25rem;
   }
 `
-
-function AboutPage({ data: { image, stacks } }) {
-  return (
-    <Layout>
-      <AboutContainer>
-        <AboutImage>
-          <Img
-            style={{ borderRadius: "10px" }}
-            fluid={image.childImageSharp.fluid}
-          />
-        </AboutImage>
-        <AboutContent>
-          <Title>about me</Title>
-          <Line />
-          <Content>
-            현재 프론트엔드 개발자 프리랜서로 활동하고 있습니다. <br />
-            어떤 기술을 사용할 때 그냥 사용하기보다는 그 기술의 원리 등에 대해
-            자세히 공부해야 된다고 생각합니다. <br />
-            Vanilla JS도 MDN, 스펙 문서를 보면서 꾸준히 공부하려고 합니다.
-            객체지향, 함수형 프로그래밍 등을 공부하면서 프레임워크나
-            라이브러리의 원리를 알고 쓰려고 노력합니다.
-          </Content>
-          <StackWrapper>
-            {stacks.nodes.map(stack => (
-              <Stack key={stack.strapiId}>{stack.name}</Stack>
-            ))}
-          </StackWrapper>
-        </AboutContent>
-      </AboutContainer>
-    </Layout>
-  )
-}
-
-export const query = graphql`
-  query {
-    image: file(relativePath: { eq: "background.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 700) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    stacks: allStrapiStacks {
-      nodes {
-        name
-        strapiId
-      }
-    }
-  }
-`
-
-export default AboutPage
