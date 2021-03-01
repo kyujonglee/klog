@@ -1,18 +1,19 @@
 import React from "react"
-import Container from "../Container"
 import { graphql, useStaticQuery } from "gatsby"
 import styled, { keyframes } from "styled-components"
 import { formatDate } from "../../lib/formatters"
 import { FcCalendar } from "react-icons/fc"
 import { isMobile } from "react-device-detect"
-import SectionTitle from "../common/SectionTitle"
+import { SectionTitle, Container, MoreButton, FlexBox } from "../common"
+
+const SHOW_COUNT = 3
 
 function Jobs() {
   const {
     allStrapiJobs: { nodes: jobs },
   } = useStaticQuery(query)
   const [tab, setTab] = React.useState(0)
-  console.log(jobs)
+  const [limit, setLimit] = React.useState(SHOW_COUNT)
   return (
     <Wrapper>
       <SectionTitle style={{ marginTop: isMobile ? "20px" : "0px" }}>
@@ -21,22 +22,34 @@ function Jobs() {
 
       {isMobile ? (
         <Column>
-          {jobs.map(({ id, title, subTitle, startDate, endDate, desc }) => (
-            <Section key={id}>
-              <Title style={{ marginBottom: "5px" }}>{title}</Title>
-              <div style={{ marginBottom: "5px" }}>
-                <FcCalendar style={{ marginRight: "5px" }} />
-                <span>{formatDate(new Date(startDate))}</span> ~{" "}
-                <span>{formatDate(new Date(endDate))}</span>
-              </div>
-              <SubTitle>{subTitle}</SubTitle>
-              {desc.map(description => (
-                <Description key={description.id}>
-                  {description.content}
-                </Description>
-              ))}
-            </Section>
-          ))}
+          {jobs
+            .filter((_, idx) => idx < limit)
+            .map(({ id, title, subTitle, startDate, endDate, desc }) => (
+              <Section key={id}>
+                <Title style={{ marginBottom: "5px" }}>{title}</Title>
+                <div style={{ marginBottom: "5px" }}>
+                  <FcCalendar style={{ marginRight: "5px" }} />
+                  <span>{formatDate(new Date(startDate))}</span> ~{" "}
+                  <span>{formatDate(new Date(endDate))}</span>
+                </div>
+                <SubTitle>{subTitle}</SubTitle>
+                {desc.map(description => (
+                  <Description key={description.id}>
+                    {description.content}
+                  </Description>
+                ))}
+              </Section>
+            ))}
+          {jobs.length > 3 && limit === SHOW_COUNT && (
+            <FlexBox
+              justifyContent="center"
+              alignItems="center"
+              style={{ margin: "10px" }}
+              onClick={() => setLimit(jobs.length)}
+            >
+              <MoreButton width="150px" height="35px" />
+            </FlexBox>
+          )}
         </Column>
       ) : (
         <ContentSize>
