@@ -1,7 +1,7 @@
 import React from "react"
 import styled, { css } from "styled-components"
 import { graphql, useStaticQuery } from "gatsby"
-import Img from "gatsby-image"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { phoneMediaQuery } from "../../styles/responsive"
 
 function About() {
@@ -22,9 +22,10 @@ function About() {
           <Content>{introduces[0].content}</Content>
         </AboutContent>
         <AboutImage>
-          <Img
+          <GatsbyImage
             style={{ borderRadius: "10px" }}
-            fluid={image.childImageSharp.fluid}
+            image={getImage(image)}
+            alt=""
           />
         </AboutImage>
       </Container>
@@ -39,9 +40,7 @@ const query = graphql`
   query {
     image: file(relativePath: { eq: "background.png" }) {
       childImageSharp {
-        fluid(maxWidth: 800) {
-          ...GatsbyImageSharpFluid
-        }
+        gatsbyImageData(width: 700)
       }
     }
     site: allSite {
