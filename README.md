@@ -1,12 +1,12 @@
 ## 할 일
 
 - [x] sidebar 만들기
-- [ ] experience 추가하기
+- [x] jobs 추가하기
 - [ ] fadeInUp 효과
-- [ ] strapi about API
+- [x] strapi about API
 - [ ] project component
 - [ ] project page
-- [ ] project API
+- [x] project API
 - [ ] blog component
 - [ ] blog page
 - [ ] blog API

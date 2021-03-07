@@ -113,6 +113,7 @@ const Wrapper = styled.div`
   min-height: 70vh;
   background-color: ${props => props.theme.colors.liteBlue};
   padding-top: 30px;
+  padding-bottom: 30px;
 `
 
 const ContentSize = styled(Container)`
