@@ -15,6 +15,7 @@ declare module "styled-components" {
       liteOrange: string
       red: string
       black: string
+      liteGreen: string
     }
   }
 }

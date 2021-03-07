@@ -14,6 +14,7 @@ const theme: DefaultTheme = {
     liteOrange: "#FED5B3",
     red: "#E93683",
     black: "#404D59",
+    liteGreen: "#c3fae8",
   },
 } as const
 
