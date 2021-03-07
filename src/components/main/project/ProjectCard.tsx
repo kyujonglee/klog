@@ -4,6 +4,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { FlexBox } from "../../common"
 import { formatDate } from "../../../lib/formatters"
 import { Link } from "gatsby"
+import DefaultImage from "../../common/DefaultImage"
 
 type Stack = {
   name: string
@@ -13,7 +14,7 @@ type Stack = {
 type Project = {
   title: string
   subTitle: string
-  image: any
+  image?: any
   startDate: string
   endDate: string
   id: string
@@ -32,9 +33,17 @@ function ProjectCard({ project }: TProjectCartProps) {
       <Link to={`/projects/${slug}`}>
         <FlexBox
           justifyContent="center"
-          style={{ backgroundColor: "#2e2929", cursor: "pointer" }}
+          style={{
+            backgroundColor: "#2e2929",
+            cursor: "pointer",
+            height: "200px",
+          }}
         >
-          <GatsbyImage image={getImage(image)} alt="" />
+          {image ? (
+            <GatsbyImage image={getImage(image)} alt="" />
+          ) : (
+            <DefaultImage />
+          )}
         </FlexBox>
       </Link>
       <Content>
