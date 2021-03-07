@@ -66,7 +66,8 @@ const ProjectContainer = styled(Container)`
   display: flex;
   flex-wrap: wrap;
   & > article {
-    width: 33%;
+    width: 32%;
+    min-width: 300px;
     margin-right: 10px;
     margin-bottom: 10px;
     ${phoneMediaQuery(css`
