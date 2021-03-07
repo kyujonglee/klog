@@ -52,7 +52,8 @@ function ProjectCard({ project }: TProjectCartProps) {
         </Link>
         <SubTitle>{subTitle}</SubTitle>
         <SDate>
-          🗓 {formatDate(new Date(startDate))} ~ {formatDate(new Date(endDate))}
+          🗓 &nbsp;{formatDate(new Date(startDate))} ~{" "}
+          {formatDate(new Date(endDate))}
         </SDate>
       </Content>
     </Wrapper>

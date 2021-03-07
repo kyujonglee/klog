@@ -72,6 +72,7 @@ const ProjectContainer = styled(Container)`
     margin-bottom: 10px;
     ${phoneMediaQuery(css`
       width: 100%;
+      margin-bottom: 20px;
     `)}
   }
 `
