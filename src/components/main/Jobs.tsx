@@ -16,7 +16,7 @@ function Jobs() {
   const [limit, setLimit] = React.useState(SHOW_COUNT)
   return (
     <Wrapper>
-      <SectionTitle style={{ marginTop: isMobile ? "20px" : "0px" }}>
+      <SectionTitle style={{ marginTop: isMobile ? "5px" : "0px" }}>
         Jobs
       </SectionTitle>
 
