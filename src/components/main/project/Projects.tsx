@@ -11,7 +11,6 @@ function Projects() {
   const {
     allStrapiProjects: { nodes: projects },
   } = useStaticQuery(query)
-  console.log(projects)
   return (
     <Wrapper>
       <SectionTitle color="#63e6be">Projects</SectionTitle>
@@ -40,10 +39,6 @@ export const query = graphql`
         startDate
         subTitle
         title
-        stacks {
-          name
-          id
-        }
         image {
           childImageSharp {
             gatsbyImageData(height: 200)
@@ -63,16 +58,10 @@ const Wrapper = styled.div`
 `
 
 const ProjectContainer = styled(Container)`
-  display: flex;
-  flex-wrap: wrap;
-  & > article {
-    width: 32%;
-    min-width: 300px;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    ${phoneMediaQuery(css`
-      width: 100%;
-      margin-bottom: 20px;
-    `)}
-  }
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  ${phoneMediaQuery(css`
+    grid-template-columns: repeat(1, 1fr);
+  `)}
 `

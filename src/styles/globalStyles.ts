@@ -27,4 +27,7 @@ export default createGlobalStyle`
             outline: none;
         }
     }
+    li {
+        list-style: none;
+    }
 `

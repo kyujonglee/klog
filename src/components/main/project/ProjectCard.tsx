@@ -5,28 +5,13 @@ import { FlexBox } from "../../common"
 import { formatDate } from "../../../lib/formatters"
 import { Link } from "gatsby"
 import DefaultImage from "../../common/DefaultImage"
+import { Project } from "../../../types"
 
-type Stack = {
-  name: string
-  id: number
-}
-
-type Project = {
-  title: string
-  subTitle: string
-  image?: any
-  startDate: string
-  endDate: string
-  id: string
-  stacks: Stack[]
-  slug: string
-}
-
-type TProjectCartProps = {
+type TProjectCardProps = {
   project: Project
 }
 
-function ProjectCard({ project }: TProjectCartProps) {
+function ProjectCard({ project }: TProjectCardProps) {
   const { image, title, subTitle, startDate, endDate, slug } = project
   return (
     <Wrapper>
