@@ -55,7 +55,7 @@ function ProjectCardDetail({ project }: TProjectCardDetailProps) {
 export default ProjectCardDetail
 
 const Wrapper = styled.article`
-  min-width: 300px;
+  min-width: 200px;
   background-color: ${props => lighten(0.08, props.theme.colors.liteOrange)};
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px;
