@@ -1,6 +1,7 @@
 import { createGlobalStyle } from "styled-components"
 import { reset } from "styled-reset"
 import { isMobile } from "react-device-detect"
+import { lighten } from "polished"
 
 export default createGlobalStyle`
     ${reset}
@@ -29,5 +30,9 @@ export default createGlobalStyle`
     }
     li {
         list-style: none;
+    }
+    *::selection { 
+        background: ${lighten(0.2, "#6C4EF4")}; 
+        color: white;
     }
 `
