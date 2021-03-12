@@ -5,6 +5,7 @@ import { formatDate } from "../../lib/formatters"
 import { FcCalendar } from "react-icons/fc"
 import { isMobile } from "react-device-detect"
 import { SectionTitle, Container, MoreButton, FlexBox } from "../common"
+import SDate from "../common/SDate"
 
 const SHOW_COUNT = 3
 
@@ -70,9 +71,12 @@ function Jobs() {
               .map(({ id, title, subTitle, startDate, endDate, desc }) => (
                 <div key={id}>
                   <Title>
-                    {title} <FcCalendar style={{ marginLeft: "10px" }} />
-                    <span>{formatDate(new Date(startDate))}</span> ~{" "}
-                    <span>{formatDate(new Date(endDate))}</span>
+                    {title}
+                    <SDate
+                      startDate={startDate}
+                      endDate={endDate}
+                      style={{ marginLeft: "10px" }}
+                    />
                   </Title>
                   <SubTitle>{subTitle}</SubTitle>
                   {desc.map(description => (

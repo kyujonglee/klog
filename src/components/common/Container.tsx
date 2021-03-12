@@ -1,6 +1,4 @@
-import styled, { css } from "styled-components"
-import { isBrowser } from "react-device-detect"
-import { phoneMediaQuery } from "../../styles/responsive"
+import styled from "styled-components"
 
 const Container = styled.div`
   width: 90vw;

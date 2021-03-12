@@ -11,7 +11,7 @@ function ProjectPage({ data: { allStrapiProjects } }) {
   return (
     <Layout>
       <Wrapper>
-        <Title>Project</Title>
+        <Title>Projects</Title>
         <Line />
         <Projects>
           {projects.map(project => (
@@ -54,15 +54,16 @@ const Wrapper = styled(Container)`
   padding-top: 12vh;
   padding-bottom: 2rem;
 `
-const Title = styled.span`
+export const Title = styled.span`
   display: inline-block;
   font-size: 2rem;
   color: ${props => props.theme.colors.darkBlue};
   text-transform: capitalize;
   font-weight: bold;
   margin-bottom: 0.5rem;
+  text-transform: capitalize;
 `
-const Line = styled.div`
+export const Line = styled.div`
   width: 60px;
   height: 4px;
   border-radius: 2px;

@@ -21,7 +21,7 @@ function Projects() {
       </Container>
       <ProjectContainer>
         {projects.map(project => (
-          <ProjectCard project={project} />
+          <ProjectCard key={project.id} project={project} />
         ))}
       </ProjectContainer>
     </Wrapper>
