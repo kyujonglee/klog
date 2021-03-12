@@ -24,7 +24,14 @@ function Navbar({ clickSideMenu }: INavbarProps) {
         </Link>
         <LinkList>
           {links.map(link => (
-            <LinkItem key={link.id} isSelected={location.pathname === link.url}>
+            <LinkItem
+              key={link.id}
+              isSelected={
+                link.title === "home"
+                  ? location.pathname === link.url
+                  : location.pathname.startsWith(link.url)
+              }
+            >
               <Link to={link.url}>{link.title}</Link>
             </LinkItem>
           ))}
