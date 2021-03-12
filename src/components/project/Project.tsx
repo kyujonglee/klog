@@ -152,6 +152,8 @@ const Stack = styled.li`
   color: ${props => props.theme.colors.red};
   background-color: ${props => lighten(0.4, props.theme.colors.red)};
   border-radius: 6px;
+  margin-right: 6px;
+  margin-bottom: 6px;
 `
 const DescContent = styled(FlexBox).attrs(() => ({
   alignItems: "center",
@@ -164,4 +166,5 @@ const DescContent = styled(FlexBox).attrs(() => ({
   margin-bottom: 6px;
   font-size: 0.875rem;
   word-break: break-all;
+  line-height: 1.25;
 `
