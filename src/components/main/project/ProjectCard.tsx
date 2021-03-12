@@ -6,6 +6,7 @@ import { formatDate } from "../../../lib/formatters"
 import { Link } from "gatsby"
 import DefaultImage from "../../common/DefaultImage"
 import { Project } from "../../../types"
+import SDate from "../../common/SDate"
 
 type TProjectCardProps = {
   project: Project
@@ -36,10 +37,7 @@ function ProjectCard({ project }: TProjectCardProps) {
           <Title>🔍 &nbsp;{title}</Title>
         </Link>
         <SubTitle>{subTitle}</SubTitle>
-        <SDate>
-          🗓 &nbsp;{formatDate(new Date(startDate))} ~{" "}
-          {formatDate(new Date(endDate))}
-        </SDate>
+        <SDate startDate={startDate} endDate={endDate} dateColor="#12b886" />
       </Content>
     </Wrapper>
   )
@@ -64,8 +62,4 @@ const SubTitle = styled.h5`
   font-size: 0.875rem;
   color: ${props => props.theme.colors.text};
   margin-bottom: 1rem;
-`
-const SDate = styled.div`
-  font-size: 0.875rem;
-  color: #12b886;
 `
