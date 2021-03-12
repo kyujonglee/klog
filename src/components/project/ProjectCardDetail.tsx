@@ -4,10 +4,10 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import styled from "styled-components"
 import { lighten, darken } from "polished"
 
-import { formatDate } from "../../lib/formatters"
 import { Project } from "../../types"
 import { FlexBox } from "../common"
 import DefaultImage from "../common/DefaultImage"
+import SDate from "../common/SDate"
 
 type TProjectCardDetailProps = {
   project: Project
@@ -43,10 +43,7 @@ function ProjectCardDetail({ project }: TProjectCardDetailProps) {
             <Stack key={stack.id}>{stack.name}</Stack>
           ))}
         </FlexBox>
-        <SDate>
-          🗓 &nbsp;{formatDate(new Date(startDate))} ~{" "}
-          {formatDate(new Date(endDate))}
-        </SDate>
+        <SDate startDate={startDate} endDate={endDate} />
       </Content>
     </Wrapper>
   )
@@ -74,12 +71,6 @@ const SubTitle = styled.p`
   color: ${props => lighten(0.05, props.theme.colors.orange)};
   margin-bottom: 6px;
   font-weight: 500;
-  font-size: 0.875rem;
-`
-const SDate = styled.time`
-  display: inline-block;
-  margin-top: 10px;
-  color: ${props => props.theme.colors.text};
   font-size: 0.875rem;
 `
 const Stack = styled.li`
