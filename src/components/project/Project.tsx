@@ -164,7 +164,9 @@ const DescContent = styled(FlexBox).attrs(() => ({
   padding: 0.5rem 0.75rem;
   border-radius: 6px;
   margin-bottom: 6px;
+  margin-right: 6px;
   font-size: 0.875rem;
   word-break: break-all;
   line-height: 1.25;
+  white-space: pre-wrap;
 `
