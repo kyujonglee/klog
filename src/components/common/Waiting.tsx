@@ -24,7 +24,7 @@ const Wrapper = styled(FlexBox).attrs(() => ({
   font-size: 2rem;
   background-color: white;
 `
-const GoHome = styled(Link)`
+export const GoHome = styled(Link)`
   display: flex;
   align-items: center;
   font-weight: 600;
