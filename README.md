@@ -11,4 +11,5 @@
 - [ ] blog page
 - [ ] blog API
 - [ ] title 추가하기 (react-helmet)
-- [ ] 404 page 만들기
+- [x] 404 page 만들기
+- [ ] content중 link 있으면 regex로 parsing해서 a 태그 붙이기
