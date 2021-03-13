@@ -1,8 +1,9 @@
 import React from "react"
 import Layout from "../template/Layout"
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import { FlexBox } from "../components/common"
 import { GoHome } from "../components/common/Waiting"
+import { phoneMediaQuery } from "../styles/responsive"
 
 function NotFoundPage() {
   return (
@@ -26,4 +27,7 @@ const Wrapper = styled(FlexBox).attrs(() => ({
   font-size: 2rem;
   font-weight: 600;
   color: ${props => props.theme.colors.red};
+  ${phoneMediaQuery(css`
+    font-size: 1.5rem;
+  `)}
 `

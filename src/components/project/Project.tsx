@@ -43,7 +43,7 @@ function Project({ data }) {
               {desc.map(({ id, content }) => (
                 <DescContent key={id}>{content}</DescContent>
               ))}
-              <FlexBox style={{ marginTop: "0.5rem" }}>
+              <FlexBox style={{ marginTop: "0.5rem" }} flexWrap="wrap">
                 {stacks.map(stack => (
                   <Stack key={stack.id}>{stack.name}</Stack>
                 ))}
