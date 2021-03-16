@@ -1,13 +1,137 @@
-import React from "react"
-import Waiting from "../components/common/Waiting"
-import Layout from "../template/Layout"
+import React, { useCallback, useMemo } from "react"
+import { graphql, Link } from "gatsby"
+import styled, { css } from "styled-components"
+import { lighten } from "polished"
 
-function BlogPage() {
+import Layout from "../template/Layout"
+import { Line, Title, Wrapper } from "./projects"
+import { phoneMediaQuery } from "../styles/responsive"
+import { FlexBox } from "../components/common"
+import { format } from "date-fns"
+
+// Todo: filter 기능 (Tags로 filter)
+
+function BlogPage({ data }) {
+  const {
+    blogs: { nodes: blogs },
+  } = data
+
+  const tags = useMemo(
+    () =>
+      blogs.reduce((arr, { tags }) => {
+        tags.forEach(tag => {
+          if (tag.name && !arr.some(({ name }) => tag.name === name))
+            arr.push(tag)
+        })
+        return arr
+      }, []),
+    [blogs]
+  )
+
+  const handleFilter = useCallback(() => {}, [])
+  console.log(blogs.length)
+
   return (
     <Layout>
-      <Waiting />
+      <Wrapper>
+        <Title>Blogs</Title>
+        <Line />
+        <FlexBox flexWrap="wrap">
+          {tags.map(tag => (
+            <Tag key={tag.id} onClick={handleFilter}>
+              {tag.name}
+            </Tag>
+          ))}
+        </FlexBox>
+        <BlogContainer>
+          {blogs.map(blog => (
+            <Blog key={blog.id}>
+              <Link to={`/blogs/${blog.slug}`}>
+                <BlogTitle>✏️ &nbsp; {blog.title}</BlogTitle>
+              </Link>
+              <FlexBox flexWrap="wrap" style={{ marginTop: "0.5rem" }}>
+                {blog.tags.map(tag => (
+                  <BlogTag key={tag.id}>{tag.name}</BlogTag>
+                ))}
+              </FlexBox>
+              🗓
+              <SDate>{format(new Date(blog.published_at), "yyyy-MM-dd")}</SDate>
+            </Blog>
+          ))}
+        </BlogContainer>
+      </Wrapper>
     </Layout>
   )
 }
 
 export default BlogPage
+
+export const query = graphql`
+  query {
+    blogs: allStrapiBlogs(sort: { fields: published_at, order: DESC }) {
+      nodes {
+        published_at(formatString: "yyyy-MM-DD")
+        slug
+        tags {
+          id
+          name
+        }
+        title
+        content
+        id
+      }
+    }
+  }
+`
+
+const BlogContainer = styled.section`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  ${phoneMediaQuery(css`
+    grid-template-columns: repeat(1, 1fr);
+  `)}
+  margin-top: 1rem;
+`
+
+const TagCss = css`
+  padding: 5px 10px;
+  background-color: ${props => lighten(0.35, props.theme.colors.red)};
+  border-radius: 12px;
+  text-transform: capitalize;
+  color: ${props => props.theme.colors.red};
+  margin-right: 4px;
+  margin-bottom: 4px;
+`
+const Tag = styled.li`
+  ${TagCss}
+  cursor: pointer;
+  &:hover {
+    background-color: white;
+  }
+`
+const Blog = styled.article`
+  background-color: ${props => lighten(0.3, props.theme.colors.purple)};
+  color: ${props => props.theme.colors.title};
+  padding: 1rem;
+  border-radius: 6px;
+`
+const BlogTitle = styled.h3`
+  font-weight: 500;
+`
+const BlogTag = styled.div`
+  margin-right: 4px;
+  margin-bottom: 4px;
+  background-color: white;
+  color: ${props => lighten(0.1, props.theme.colors.purple)};
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 0.875rem;
+`
+const SDate = styled.span`
+  display: inline-block;
+  color: ${props => props.theme.colors.text};
+  font-size: 0.875rem;
+  margin-left: 8px;
+  margin-top: 4px;
+`

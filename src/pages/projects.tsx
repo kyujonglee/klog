@@ -49,7 +49,7 @@ export const query = graphql`
   }
 `
 
-const Wrapper = styled(Container)`
+export const Wrapper = styled(Container)`
   min-height: 85vh;
   padding-top: 12vh;
   padding-bottom: 2rem;

@@ -5,7 +5,7 @@ import { formatDate } from "../../lib/formatters"
 
 type TSDateProps = {
   startDate: string
-  endDate: string
+  endDate?: string
   dateColor?: string
   fontSize?: string
   style?: React.CSSProperties
@@ -22,7 +22,8 @@ function SDate({
   return (
     <Time style={style} dateColor={dateColor} fontSize={fontSize} {...rest}>
       <FcCalendar style={{ marginRight: "5px" }} />{" "}
-      {formatDate(new Date(startDate))} ~ {formatDate(new Date(endDate))}
+      {formatDate(new Date(startDate))}{" "}
+      {endDate && `~ ${formatDate(new Date(endDate))}`}
     </Time>
   )
 }
