@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from "react"
+import React, { useCallback, useMemo, useState } from "react"
 import { graphql, Link } from "gatsby"
 import styled, { css } from "styled-components"
 import { lighten } from "polished"
@@ -16,6 +16,15 @@ function BlogPage({ data }) {
     blogs: { nodes: blogs },
   } = data
 
+  const [checked, setChecked] = useState()
+  const handleCheckTag = useCallback(
+    id => {
+      if (checked !== id) setChecked(id)
+      else setChecked(null)
+    },
+    [checked, setChecked]
+  )
+
   const tags = useMemo(
     () =>
       blogs.reduce((arr, { tags }) => {
@@ -28,17 +37,25 @@ function BlogPage({ data }) {
     [blogs]
   )
 
-  const handleFilter = useCallback(() => {}, [])
-  console.log(blogs.length)
+  const handleFilter = useCallback(
+    tagId => () => {
+      handleCheckTag(tagId)
+    },
+    [handleCheckTag]
+  )
 
   return (
     <Layout>
       <Wrapper>
         <Title>Blogs</Title>
-        <Line />
+        <Line color="#ffc9c9" />
         <FlexBox flexWrap="wrap">
           {tags.map(tag => (
-            <Tag key={tag.id} onClick={handleFilter}>
+            <Tag
+              key={tag.id}
+              onClick={handleFilter(tag.id)}
+              isChecked={checked === tag.id}
+            >
               {tag.name}
             </Tag>
           ))}
@@ -103,12 +120,17 @@ const TagCss = css`
   margin-right: 4px;
   margin-bottom: 4px;
 `
-const Tag = styled.li`
+const Tag = styled.li<{ isChecked: boolean }>`
   ${TagCss}
   cursor: pointer;
   &:hover {
     background-color: white;
   }
+  ${props =>
+    props.isChecked &&
+    css`
+      background-color: white;
+    `}
 `
 const Blog = styled.article`
   background-color: ${props => lighten(0.3, props.theme.colors.purple)};
