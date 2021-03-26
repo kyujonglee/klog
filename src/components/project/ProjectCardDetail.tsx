@@ -43,7 +43,7 @@ function ProjectCardDetail({ project }: TProjectCardDetailProps) {
             <Stack key={stack.id}>{stack.name}</Stack>
           ))}
         </FlexBox>
-        <SDate startDate={startDate} endDate={endDate} />
+        <SDate startDate={startDate} endDate={endDate} dateColor="#12b886" />
       </Content>
     </Wrapper>
   )
@@ -53,7 +53,9 @@ export default ProjectCardDetail
 
 const Wrapper = styled.article`
   min-width: 200px;
-  background-color: ${props => lighten(0.08, props.theme.colors.liteOrange)};
+  background-color: ${props => lighten(0.1, props.theme.colors.liteGreen)};
+  /* background-color: ${props =>
+    lighten(0.08, props.theme.colors.liteOrange)}; */
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px;
 `
@@ -61,14 +63,16 @@ const Content = styled.div`
   padding: 16px;
 `
 const Title = styled.h3`
-  color: ${props => darken(0.1, props.theme.colors.orange)};
+  color: ${props => props.theme.colors.title};
+  /* color: ${props => darken(0.1, props.theme.colors.orange)}; */
   margin-bottom: 6px;
   font-weight: bold;
   font-size: 1rem;
   line-height: 1.25;
 `
 const SubTitle = styled.p`
-  color: ${props => lighten(0.05, props.theme.colors.orange)};
+  color: ${props => props.theme.colors.text};
+  /* color: ${props => lighten(0.05, props.theme.colors.orange)}; */
   margin-bottom: 6px;
   font-weight: 500;
   font-size: 0.875rem;

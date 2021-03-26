@@ -16,7 +16,6 @@ function Project({ data }) {
   const {
     project: { title, subTitle, image, stacks, endDate, startDate, desc },
   } = data
-  console.log("project", data.project)
   return (
     <Layout>
       <Wrapper>
@@ -32,7 +31,7 @@ function Project({ data }) {
         <Main>
           <Column>
             <Content>
-              <ProjectTitle>🔥 {title}</ProjectTitle>
+              <ProjectTitle>🔍 {title}</ProjectTitle>
               <ProjectSubTitle>{subTitle}</ProjectSubTitle>
               <SDate
                 startDate={startDate}
