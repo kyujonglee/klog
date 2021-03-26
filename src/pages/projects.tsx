@@ -63,11 +63,11 @@ export const Title = styled.span`
   margin-bottom: 0.5rem;
   text-transform: capitalize;
 `
-export const Line = styled.div`
+export const Line = styled.div<{ color?: string }>`
   width: 60px;
   height: 4px;
   border-radius: 2px;
-  background-color: #63e6be;
+  background-color: ${props => props.color ?? "#63e6be"};
   margin-bottom: 1rem;
 `
 const Projects = styled.section`

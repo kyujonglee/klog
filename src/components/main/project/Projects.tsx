@@ -52,9 +52,9 @@ export const query = graphql`
 
 const Wrapper = styled.div`
   min-height: 50vh;
-  background-color: ${props => lighten(0.1, props.theme.colors.liteGreen)};
-  padding-top: 30px;
-  padding-bottom: 30px;
+  background-color: ${props => lighten(0.1, props.theme.colors.lightGreen)};
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 `
 
 const ProjectContainer = styled(Container)`
@@ -62,6 +62,7 @@ const ProjectContainer = styled(Container)`
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 20px;
   ${phoneMediaQuery(css`
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(1, minmax(300px, 400px));
+    justify-content: center;
   `)}
 `

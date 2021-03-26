@@ -4,17 +4,17 @@ const theme: DefaultTheme = {
   colors: {
     bgColor: "#F7F6F7",
     blue: "#6073EB",
-    liteBlue: "#dbe4ff",
+    lightBlue: "#dbe4ff",
     text: "#7E8188",
     title: "#0E0D23",
     purple: "#6C4EF4",
     darkBlue: "#070711",
     gray: "#4C4B5C",
     orange: "#FF6B01",
-    liteOrange: "#FED5B3",
+    lightOrange: "#FED5B3",
     red: "#E93683",
     black: "#404D59",
-    liteGreen: "#c3fae8",
+    lightGreen: "#c3fae8",
   },
 } as const
 
