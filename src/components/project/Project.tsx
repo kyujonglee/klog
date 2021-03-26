@@ -1,7 +1,6 @@
 import React from "react"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 import styled, { css } from "styled-components"
-import { BiLeftArrowAlt } from "react-icons/bi"
 import { lighten } from "polished"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
@@ -10,6 +9,7 @@ import { Container, FlexBox } from "../common"
 import { Line, Title } from "../../pages/projects"
 import { phoneMediaQuery } from "../../styles/responsive"
 import DefaultImage from "../common/DefaultImage"
+import PrevButton from "../common/PrevButton"
 import SDate from "../common/SDate"
 
 function Project({ data }) {
@@ -20,9 +20,7 @@ function Project({ data }) {
     <Layout>
       <Wrapper>
         <FlexBox>
-          <PrevButton to="/projects">
-            <BiLeftArrowAlt size="26" color="#6C4EF4" />
-          </PrevButton>
+          <PrevButton to="/projects" />
           <div>
             <Title>project</Title>
             <Line />
@@ -100,20 +98,7 @@ const Wrapper = styled(Container)`
   padding-top: 12vh;
   padding-bottom: 2rem;
 `
-const PrevButton = styled(Link)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 2rem;
-  height: 2rem;
-  border-radius: 50%;
 
-  margin-right: 6px;
-
-  &:hover {
-    background-color: ${props => lighten(0.6, props.theme.colors.gray)};
-  }
-`
 const Main = styled.main`
   display: grid;
   grid-template-columns: 1.5fr 1fr;
@@ -159,7 +144,7 @@ const DescContent = styled(FlexBox).attrs(() => ({
 }))`
   display: inline-block;
   color: ${props => props.theme.colors.blue};
-  background-color: ${props => props.theme.colors.liteBlue};
+  background-color: ${props => props.theme.colors.lightBlue};
   padding: 0.5rem 0.75rem;
   border-radius: 6px;
   margin-bottom: 6px;
