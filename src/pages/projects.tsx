@@ -67,7 +67,7 @@ export const Line = styled.div`
   width: 60px;
   height: 4px;
   border-radius: 2px;
-  background-color: ${props => props.theme.colors.orange};
+  background-color: #63e6be;
   margin-bottom: 1rem;
 `
 const Projects = styled.section`
