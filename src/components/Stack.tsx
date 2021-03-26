@@ -5,7 +5,7 @@ const Button = styled.button`
   padding: 0.4rem 0.5rem;
   font-weight: 500;
   color: ${props => props.theme.colors.orange};
-  background-color: ${props => props.theme.colors.liteOrange};
+  background-color: ${props => props.theme.colors.lightOrange};
   border-radius: 3px;
   text-transform: uppercase;
   border: none;

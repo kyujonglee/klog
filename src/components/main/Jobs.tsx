@@ -115,7 +115,7 @@ const query = graphql`
 
 const Wrapper = styled.div`
   min-height: 70vh;
-  background-color: ${props => props.theme.colors.liteBlue};
+  background-color: ${props => props.theme.colors.lightBlue};
   padding-top: 30px;
   padding-bottom: 30px;
 `

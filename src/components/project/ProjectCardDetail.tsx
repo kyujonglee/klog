@@ -53,9 +53,7 @@ export default ProjectCardDetail
 
 const Wrapper = styled.article`
   min-width: 200px;
-  background-color: ${props => lighten(0.1, props.theme.colors.liteGreen)};
-  /* background-color: ${props =>
-    lighten(0.08, props.theme.colors.liteOrange)}; */
+  background-color: ${props => lighten(0.1, props.theme.colors.lightGreen)};
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px;
 `
@@ -66,7 +64,7 @@ const Title = styled.h3`
   color: ${props => props.theme.colors.title};
   /* color: ${props => darken(0.1, props.theme.colors.orange)}; */
   margin-bottom: 6px;
-  font-weight: bold;
+  font-weight: 500;
   font-size: 1rem;
   line-height: 1.25;
 `

@@ -5,17 +5,17 @@ declare module "styled-components" {
     colors: {
       bgColor: string
       blue: string
-      liteBlue: string
+      lightBlue: string
       text: string
       title: string
       purple: string
       darkBlue: string
       gray: string
       orange: string
-      liteOrange: string
+      lightOrange: string
       red: string
       black: string
-      liteGreen: string
+      lightGreen: string
     }
   }
 }
