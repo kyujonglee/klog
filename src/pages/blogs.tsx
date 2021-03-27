@@ -8,10 +8,11 @@ import { Line, Title, Wrapper } from "./projects"
 import { phoneMediaQuery } from "../styles/responsive"
 import { FlexBox } from "../components/common"
 import { format } from "date-fns"
+import SEO from "../components/common/SEO"
 
 // Todo: filter 기능 (Tags로 filter)
 
-function BlogPage({ data }) {
+function BlogPage({ location, data }) {
   const {
     blogs: { nodes: blogs },
   } = data
@@ -46,6 +47,11 @@ function BlogPage({ data }) {
 
   return (
     <Layout>
+      <SEO
+        url={location.pathname}
+        description={"This is my blog posts."}
+        siteTitle={`Blogs | Klog`}
+      />
       <Wrapper>
         <Title>Blogs</Title>
         <Line color="#ffc9c9" />
@@ -111,7 +117,7 @@ const BlogContainer = styled.section`
   margin-top: 1rem;
 `
 
-const TagCss = css`
+export const TagCss = css`
   padding: 5px 10px;
   background-color: ${props => lighten(0.35, props.theme.colors.red)};
   border-radius: 12px;

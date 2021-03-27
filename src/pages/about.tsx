@@ -5,10 +5,17 @@ import Layout from "../template/Layout"
 import { graphql } from "gatsby"
 import { phoneMediaQuery } from "../styles/responsive"
 import Stack from "../components/Stack"
+import SEO from "../components/common/SEO"
 
-function AboutPage({ data: { image, stacks, introduce } }) {
+function AboutPage({ location, data: { image, stacks, introduce } }) {
   return (
     <Layout>
+      <SEO
+        url={`${location.pathname}`}
+        siteTitle={"About | Klog"}
+        title={`about blackbell`}
+        description={introduce.nodes[0].content}
+      />
       <AboutContainer>
         <AboutImage>
           <GatsbyImage
