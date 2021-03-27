@@ -117,7 +117,7 @@ const BlogContainer = styled.section`
   margin-top: 1rem;
 `
 
-const TagCss = css`
+export const TagCss = css`
   padding: 5px 10px;
   background-color: ${props => lighten(0.35, props.theme.colors.red)};
   border-radius: 12px;
