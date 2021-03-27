@@ -11,7 +11,7 @@ const links: LinkData[] = [
   { id: 1, title: "home", url: "/", icon: <FcHome /> },
   { id: 2, title: "about", url: "/about", icon: <FcAbout /> },
   { id: 3, title: "projects", url: "/projects", icon: <FcViewDetails /> },
-  { id: 4, title: "blog", url: "/blog", icon: <FcReading /> },
+  { id: 4, title: "blogs", url: "/blog", icon: <FcReading /> },
   { id: 5, title: "contact", url: "/contact", icon: <FcBusinessContact /> },
 ]
 
