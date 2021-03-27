@@ -5,11 +5,19 @@ import styled, { css } from "styled-components"
 import { Container } from "../components/common"
 import { ProjectCardDetail } from "../components/project"
 import { phoneMediaQuery } from "../styles/responsive"
+import SEO from "../components/common/SEO"
 
-function ProjectPage({ data: { allStrapiProjects } }) {
+function ProjectPage({ location, data: { allStrapiProjects } }) {
   const { nodes: projects } = allStrapiProjects
+  console.log(projects[0].publicURL)
   return (
     <Layout>
+      <SEO
+        url={location.pathname}
+        imageUrl={projects[0].image?.publicURL}
+        description={"This is my projects. Actually I did."}
+        siteTitle={`Projects | Klog`}
+      />
       <Wrapper>
         <Title>Projects</Title>
         <Line />
@@ -42,6 +50,7 @@ export const query = graphql`
           childImageSharp {
             gatsbyImageData(height: 200)
           }
+          publicURL
         }
         slug
       }

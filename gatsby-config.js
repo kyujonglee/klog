@@ -13,6 +13,7 @@ module.exports = {
   siteMetadata: {
     title: "Klog(blackbell)",
     author: "blackbell",
+    siteUrl: "https://klog.gtsb.io",
   },
   plugins: [
     `gatsby-plugin-styled-components`,

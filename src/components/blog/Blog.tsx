@@ -11,6 +11,7 @@ import MarkDownContainer from "../common/MarkDownContainer"
 import PrevButton from "../common/PrevButton"
 import { Line, Title } from "../../pages/projects"
 import { Container, FlexBox } from "../common"
+import SEO from "../common/SEO"
 
 const renderers = {
   code: ({ language, value }) => {
@@ -25,12 +26,18 @@ const renderers = {
   },
 }
 
-function Blog({ data }) {
+function Blog({ location, data }) {
   const {
-    blog: { content },
+    blog: { title, content, tags },
   } = data
   return (
     <Layout>
+      <SEO
+        url={location.pathname}
+        title={title}
+        siteTitle={`Blog | ${title}`}
+        keyword={tags.map(tag => tag.name).join(", ")}
+      />
       <BackWrapper>
         <Wrapper>
           <FlexBox>

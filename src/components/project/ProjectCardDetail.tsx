@@ -4,7 +4,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import styled from "styled-components"
 import { lighten, darken } from "polished"
 
-import { Project } from "../../types"
+import { Project } from "../../allTypes"
 import { FlexBox } from "../common"
 import DefaultImage from "../common/DefaultImage"
 import SDate from "../common/SDate"

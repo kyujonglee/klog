@@ -11,13 +11,22 @@ import { phoneMediaQuery } from "../../styles/responsive"
 import DefaultImage from "../common/DefaultImage"
 import PrevButton from "../common/PrevButton"
 import SDate from "../common/SDate"
+import SEO from "../common/SEO"
 
-function Project({ data }) {
+function Project({ location, data }) {
   const {
     project: { title, subTitle, image, stacks, endDate, startDate, desc },
   } = data
   return (
     <Layout>
+      <SEO
+        url={location.pathname}
+        description={subTitle}
+        title={title}
+        imageUrl={image?.publicURL}
+        siteTitle={`Project | ${title}`}
+        keyword={stacks.map(stack => stack.name).join(", ")}
+      />
       <Wrapper>
         <FlexBox>
           <PrevButton to="/projects" />
@@ -84,6 +93,7 @@ export const query = graphql`
         childImageSharp {
           gatsbyImageData(height: 400)
         }
+        publicURL
       }
       desc {
         content
