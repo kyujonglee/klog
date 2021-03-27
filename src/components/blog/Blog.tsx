@@ -6,6 +6,7 @@ import styled from "styled-components"
 import { darken } from "polished"
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
 import { tomorrow } from "react-syntax-highlighter/dist/esm/styles/prism"
+import htmlParser from "react-markdown/plugins/html-parser"
 
 import Layout from "../../template/Layout"
 import MarkDownContainer from "../common/MarkDownContainer"
