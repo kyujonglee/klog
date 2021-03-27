@@ -7,11 +7,16 @@
 - [x] project component
 - [x] project page
 - [x] project API
-- [ ] blog component
-- [ ] blog page
-- [ ] blog API
+- [x] blog component
+- [x] blog page
+- [x] blog API
 - [x] title 추가하기 (react-helmet)
 - [x] 404 page 만들기
 - [ ] content중 link 있으면 regex로 parsing해서 a 태그 붙이기
 - [ ] blog 페이지 filter 기능
 - [ ] dark mode 적용시켜보기
+- [ ] top button
+
+- blog content bug
+    - [x] img tag 파싱 안되는 문제
+    - [ ] table publishing

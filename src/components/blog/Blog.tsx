@@ -62,6 +62,7 @@ function Blog({ location, data }) {
               renderers={renderers}
               plugins={[gfm]}
               children={content}
+              allowDangerousHtml
             />
           </MarkDownContainer>
         </Wrapper>
