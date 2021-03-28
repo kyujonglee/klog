@@ -2,11 +2,14 @@ import { graphql } from "gatsby"
 import React from "react"
 import ReactMarkdown from "react-markdown"
 import gfm from "remark-gfm"
+import slug from "remark-slug"
+import breaks from "remark-breaks"
+import math from "remark-math"
+import toc from "remark-toc"
 import styled from "styled-components"
 import { darken } from "polished"
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
 import { tomorrow } from "react-syntax-highlighter/dist/esm/styles/prism"
-import htmlParser from "react-markdown/plugins/html-parser"
 
 import Layout from "../../template/Layout"
 import MarkDownContainer from "../common/MarkDownContainer"
@@ -61,7 +64,7 @@ function Blog({ location, data }) {
           <MarkDownContainer>
             <ReactMarkdown
               renderers={renderers}
-              plugins={[gfm]}
+              plugins={[gfm, breaks, math, slug, toc]}
               children={content}
               allowDangerousHtml
             />

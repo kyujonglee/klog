@@ -50,12 +50,24 @@ const MarkDownContainer = styled.div`
       background-color: ${props => lighten(0.32, props.theme.colors.purple)};
       border-radius: 0.5rem;
     }
-    a {
+    a,
+    blockquote a {
       color: ${props => props.theme.colors.purple};
+    }
+    b {
+      font-weight: bold;
     }
     li {
       list-style: inside;
       margin: 0.25rem 0;
+    }
+    blockquote {
+      border-left: 5px solid ${props => lighten(0.2, props.theme.colors.purple)};
+      background-color: ${props => props.theme.colors.lightGray2};
+      padding: 0.25rem 0rem;
+      padding-left: 0.75rem;
+      border-radius: 3px;
+      margin: 0.75rem 0;
     }
     table {
       background-color: white;
@@ -89,8 +101,6 @@ const MarkDownContainer = styled.div`
         &:last-child {
           border-right: 0;
         }
-      }
-      tr {
       }
     }
   }
