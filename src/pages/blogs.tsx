@@ -87,9 +87,9 @@ function BlogPage({ location, data }) {
                 <BlogTitle>✏️ &nbsp; {blog.title}</BlogTitle>
               </Link>
               <FlexBox flexWrap="wrap" style={{ marginTop: "0.5rem" }}>
-                {blog.tags.map(tag => (
-                  <BlogTag key={tag.id}>{tag.name}</BlogTag>
-                ))}
+                {blog.tags.map(tag => {
+                  return tag.name && <BlogTag key={tag.id}>{tag.name}</BlogTag>
+                })}
               </FlexBox>
               🗓
               <SDate>{format(new Date(blog.published_at), "yyyy-MM-dd")}</SDate>

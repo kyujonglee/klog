@@ -2,10 +2,8 @@ import { graphql } from "gatsby"
 import React from "react"
 import ReactMarkdown from "react-markdown"
 import gfm from "remark-gfm"
-import slug from "remark-slug"
 import breaks from "remark-breaks"
 import math from "remark-math"
-import toc from "remark-toc"
 import styled from "styled-components"
 import { darken } from "polished"
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
@@ -62,9 +60,10 @@ function Blog({ location, data }) {
             </FlexBox>
           </div>
           <MarkDownContainer>
+            {/* https://spec.commonmark.org/dingus/ */}
             <ReactMarkdown
+              plugins={[breaks, gfm, math]}
               renderers={renderers}
-              plugins={[gfm, breaks, math, slug, toc]}
               children={content}
               allowDangerousHtml
             />
