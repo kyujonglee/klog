@@ -7,7 +7,10 @@ import math from "remark-math"
 import styled from "styled-components"
 import { darken } from "polished"
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
-import { tomorrow } from "react-syntax-highlighter/dist/esm/styles/prism"
+import {
+  tomorrow,
+  duotoneSea,
+} from "react-syntax-highlighter/dist/esm/styles/prism"
 
 import Layout from "../../template/Layout"
 import MarkDownContainer from "../common/MarkDownContainer"
