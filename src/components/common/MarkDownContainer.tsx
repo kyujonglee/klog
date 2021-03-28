@@ -68,6 +68,10 @@ const MarkDownContainer = styled.div`
       padding-left: 0.75rem;
       border-radius: 3px;
       margin: 0.75rem 0;
+      white-space: pre-wrap;
+    }
+    img {
+      max-width: 100%;
     }
     table {
       background-color: white;
