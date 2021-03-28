@@ -49,6 +49,7 @@ const MarkDownContainer = styled.div`
       color: ${props => lighten(0.2, props.theme.colors.title)};
       background-color: ${props => lighten(0.32, props.theme.colors.purple)};
       border-radius: 0.5rem;
+      white-space: pre-wrap;
     }
     a,
     blockquote a {
@@ -69,6 +70,7 @@ const MarkDownContainer = styled.div`
       border-radius: 3px;
       margin: 0.75rem 0;
       white-space: pre-wrap;
+      font-style: italic;
     }
     img {
       max-width: 100%;
