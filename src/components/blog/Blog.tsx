@@ -19,6 +19,7 @@ import { TagCss } from "../../pages/blogs"
 
 const renderers = {
   code: ({ language, value }) => {
+    if (!language) return <code>{value}</code>
     return (
       <SyntaxHighlighter
         style={tomorrow}
