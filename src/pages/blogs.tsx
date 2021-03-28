@@ -10,6 +10,7 @@ import { FlexBox } from "../components/common"
 import { format } from "date-fns"
 import SEO from "../components/common/SEO"
 
+const ALL = "ALL"
 // Todo: filter 기능 (Tags로 filter)
 
 function BlogPage({ location, data }) {
@@ -17,11 +18,11 @@ function BlogPage({ location, data }) {
     blogs: { nodes: blogs },
   } = data
 
-  const [checked, setChecked] = useState()
+  const [checked, setChecked] = useState(ALL)
   const handleCheckTag = useCallback(
     id => {
       if (checked !== id) setChecked(id)
-      else setChecked(null)
+      else setChecked(ALL)
     },
     [checked, setChecked]
   )
@@ -45,6 +46,14 @@ function BlogPage({ location, data }) {
     [handleCheckTag]
   )
 
+  const filterBlogs = useCallback(
+    blog => {
+      if (checked === ALL) return blog
+      else return blog.tags.some(({ id }) => checked === id)
+    },
+    [checked]
+  )
+
   return (
     <Layout>
       <SEO
@@ -56,6 +65,11 @@ function BlogPage({ location, data }) {
         <Title>Blogs</Title>
         <Line color="#ffc9c9" />
         <FlexBox flexWrap="wrap">
+          {
+            <Tag onClick={handleFilter(ALL)} isChecked={checked === ALL}>
+              All
+            </Tag>
+          }
           {tags.map(tag => (
             <Tag
               key={tag.id}
@@ -67,7 +81,7 @@ function BlogPage({ location, data }) {
           ))}
         </FlexBox>
         <BlogContainer>
-          {blogs.map(blog => (
+          {blogs.filter(filterBlogs).map(blog => (
             <Blog key={blog.id}>
               <Link to={`/blogs/${blog.slug}`}>
                 <BlogTitle>✏️ &nbsp; {blog.title}</BlogTitle>
