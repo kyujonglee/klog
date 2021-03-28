@@ -19,4 +19,5 @@
 
 - blog content bug
     - [x] img tag 파싱 안되는 문제
-    - [ ] table publishing
+    - [x] table publishing
+    - [ ] blockquote blug
