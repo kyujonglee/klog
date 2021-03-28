@@ -20,8 +20,8 @@ function BlogPage({ location, data }) {
 
   const [checked, setChecked] = useState(ALL)
   const handleCheckTag = useCallback(
-    id => {
-      if (checked !== id) setChecked(id)
+    tagName => {
+      if (checked !== tagName) setChecked(tagName)
       else setChecked(ALL)
     },
     [checked, setChecked]
@@ -31,7 +31,12 @@ function BlogPage({ location, data }) {
     () =>
       blogs.reduce((arr, { tags }) => {
         tags.forEach(tag => {
-          if (tag.name && !arr.some(({ name }) => tag.name === name))
+          if (
+            tag.name &&
+            !arr.some(
+              ({ name }) => tag.name.toUpperCase() === name.toUpperCase()
+            )
+          )
             arr.push(tag)
         })
         return arr
@@ -40,8 +45,8 @@ function BlogPage({ location, data }) {
   )
 
   const handleFilter = useCallback(
-    tagId => () => {
-      handleCheckTag(tagId)
+    tagName => () => {
+      handleCheckTag(tagName)
     },
     [handleCheckTag]
   )
@@ -49,7 +54,12 @@ function BlogPage({ location, data }) {
   const filterBlogs = useCallback(
     blog => {
       if (checked === ALL) return blog
-      else return blog.tags.some(({ id }) => checked === id)
+      else {
+        console.log(blog.tags)
+        return blog.tags.some(
+          ({ name }) => checked.toUpperCase() === name.toUpperCase()
+        )
+      }
     },
     [checked]
   )
@@ -73,8 +83,8 @@ function BlogPage({ location, data }) {
           {tags.map(tag => (
             <Tag
               key={tag.id}
-              onClick={handleFilter(tag.id)}
-              isChecked={checked === tag.id}
+              onClick={handleFilter(tag.name)}
+              isChecked={checked.toUpperCase() === tag.name.toUpperCase()}
             >
               {tag.name}
             </Tag>
