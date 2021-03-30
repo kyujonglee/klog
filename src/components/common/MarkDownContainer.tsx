@@ -54,6 +54,7 @@ const MarkDownContainer = styled.div`
     a,
     blockquote a {
       color: ${props => props.theme.colors.purple};
+      word-break: break-all;
     }
     b {
       font-weight: bold;
