@@ -16,8 +16,9 @@
 - [ ] blog 페이지 filter 기능
 - [ ] dark mode 적용시켜보기
 - [ ] top button
+- [ ] markdown table -> width: 100%, table-layout: fixed; 적용
 
 - blog content bug
-    - [x] img tag 파싱 안되는 문제
-    - [x] table publishing
-    - [ ] blockquote blug
+  - [x] img tag 파싱 안되는 문제
+  - [x] table publishing
+  - [ ] blockquote blug

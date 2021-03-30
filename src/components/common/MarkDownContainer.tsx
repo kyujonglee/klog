@@ -1,8 +1,12 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import { lighten, darken } from "polished"
+import { phoneMediaQuery } from "../../styles/responsive"
 
 const MarkDownContainer = styled.div`
   padding: 2rem;
+  ${phoneMediaQuery(css`
+    padding: 0.2rem;
+  `)}
   line-height: 1.2;
   color: ${props => props.theme.colors.gray};
   & {
@@ -80,10 +84,13 @@ const MarkDownContainer = styled.div`
       background-color: white;
       margin: 0.5rem 0;
       border-radius: 0.5rem;
+      table-layout: fixed;
+      width: 100%;
       th,
       td {
         text-align: center;
         vertical-align: middle;
+        word-break: break-word;
       }
       th {
         padding: 0.5rem;
