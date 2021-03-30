@@ -9,7 +9,6 @@ import SEO from "../components/common/SEO"
 
 function ProjectPage({ location, data: { allStrapiProjects } }) {
   const { nodes: projects } = allStrapiProjects
-  console.log(projects[0].publicURL)
   return (
     <Layout>
       <SEO
@@ -23,7 +22,7 @@ function ProjectPage({ location, data: { allStrapiProjects } }) {
         <Line />
         <Projects>
           {projects.map(project => (
-            <ProjectCardDetail key={project} project={project} />
+            <ProjectCardDetail key={project.id} project={project} />
           ))}
         </Projects>
       </Wrapper>
