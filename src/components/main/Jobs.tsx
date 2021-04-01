@@ -6,6 +6,7 @@ import { FcCalendar } from "react-icons/fc"
 import { isMobile } from "react-device-detect"
 import { SectionTitle, Container, MoreButton, FlexBox } from "../common"
 import SDate from "../common/SDate"
+import CustomLinkify from "../../lib/CustomLinkify"
 
 const SHOW_COUNT = 3
 
@@ -79,11 +80,13 @@ function Jobs() {
                     />
                   </Title>
                   <SubTitle>{subTitle}</SubTitle>
-                  {desc.map(description => (
-                    <Description key={description.id}>
-                      {description.content}
-                    </Description>
-                  ))}
+                  <CustomLinkify>
+                    {desc.map(description => (
+                      <Description key={description.id}>
+                        {description.content}
+                      </Description>
+                    ))}
+                  </CustomLinkify>
                 </div>
               ))}
           </Content>
