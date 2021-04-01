@@ -1,11 +1,11 @@
 import React, { ReactChildren } from "react"
-import styled from "styled-components"
+import styled, { DefaultTheme } from "styled-components"
 import Linkify from "react-linkify"
 import { darken } from "polished"
 
 type TCustomLinkify = {
   children: ReactChildren
-  linkColor?: string
+  linkColor?: keyof DefaultTheme["colors"]
 }
 
 const CustomLinkify = ({ children, linkColor }: TCustomLinkify) => (
@@ -31,7 +31,7 @@ const CustomLinkify = ({ children, linkColor }: TCustomLinkify) => (
 
 export default CustomLinkify
 
-const SLink = styled.a<{ linkColor?: string }>`
+const SLink = styled.a<{ linkColor?: keyof DefaultTheme["colors"] }>`
   color: ${props =>
     props.theme.colors[props.linkColor] ?? props.theme.colors.purple};
   &:hover {
