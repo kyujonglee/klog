@@ -47,11 +47,13 @@ function Project({ location, data }) {
                 fontSize="1rem"
                 style={{ marginBottom: "0.5rem" }}
               />
-              <CustomLinkify linkColor="gray">
-                {desc.map(({ id, content }) => (
-                  <DescContent key={id}>{content}</DescContent>
-                ))}
-              </CustomLinkify>
+              <FlexBox flexDirection="column">
+                <CustomLinkify linkColor="gray">
+                  {desc.map(({ id, content }) => (
+                    <DescContent key={id}>{content}</DescContent>
+                  ))}
+                </CustomLinkify>
+              </FlexBox>
               <FlexBox style={{ marginTop: "0.5rem" }} flexWrap="wrap">
                 {stacks.map(stack => (
                   <Stack key={stack.id}>{stack.name}</Stack>
