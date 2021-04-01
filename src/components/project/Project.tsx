@@ -12,6 +12,7 @@ import DefaultImage from "../common/DefaultImage"
 import PrevButton from "../common/PrevButton"
 import SDate from "../common/SDate"
 import SEO from "../common/SEO"
+import CustomLinkify from "../../lib/CustomLinkify"
 
 function Project({ location, data }) {
   const {
@@ -46,9 +47,11 @@ function Project({ location, data }) {
                 fontSize="1rem"
                 style={{ marginBottom: "0.5rem" }}
               />
-              {desc.map(({ id, content }) => (
-                <DescContent key={id}>{content}</DescContent>
-              ))}
+              <CustomLinkify linkColor="gray">
+                {desc.map(({ id, content }) => (
+                  <DescContent key={id}>{content}</DescContent>
+                ))}
+              </CustomLinkify>
               <FlexBox style={{ marginTop: "0.5rem" }} flexWrap="wrap">
                 {stacks.map(stack => (
                   <Stack key={stack.id}>{stack.name}</Stack>
