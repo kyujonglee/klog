@@ -37,6 +37,7 @@
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
     "react-icons": "^4.2.0",
+    "react-linkify": "^1.0.0-alpha",
     "react-markdown": "^5.0.3",
     "react-syntax-highlighter": "^15.4.3",
     "remark-breaks": "^2.0.1",
@@ -52,6 +53,7 @@
     "@storybook/addon-essentials": "^6.1.21",
     "@storybook/addon-links": "^6.1.21",
     "@storybook/react": "^6.1.21",
+    "@types/react-linkify": "^1.0.0",
     "babel-loader": "^8.2.2",
     "prettier": "2.2.1",
     "react-is": "^17.0.1"
