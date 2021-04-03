@@ -19,7 +19,7 @@ type TViewMoreProps = {
 function ViewMore({ text = "View More", color, url = "/" }: TViewMoreProps) {
   return (
     <Link to={url}>
-      <Text color={color}>&gt; {text}</Text>
+      <Text color={color}>{text}</Text>
     </Link>
   )
 }
