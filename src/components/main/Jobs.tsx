@@ -100,7 +100,7 @@ export default Jobs
 
 const query = graphql`
   query {
-    allStrapiJobs(sort: { order: DESC, fields: startDate }) {
+    allStrapiJobs(sort: { order: DESC, fields: endDate }) {
       nodes {
         endDate
         startDate
