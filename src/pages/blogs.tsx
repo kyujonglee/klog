@@ -142,7 +142,8 @@ const BlogContainer = styled.section`
 `
 
 export const TagCss = css`
-  padding: 5px 10px;
+  all: unset;
+  padding: 6px 10px;
   background-color: ${props => lighten(0.35, props.theme.colors.red)};
   border-radius: 12px;
   text-transform: capitalize;
@@ -150,9 +151,12 @@ export const TagCss = css`
   margin-right: 4px;
   margin-bottom: 4px;
 `
-const Tag = styled.li<{ isChecked: boolean }>`
+const Tag = styled.div<{ isChecked: boolean }>`
   ${TagCss}
+  display: inline-flex;
+  align-items: flex-end;
   cursor: pointer;
+  border: 1px solid ${props => lighten(0.35, props.theme.colors.red)};
   &:hover {
     background-color: white;
   }
@@ -160,6 +164,7 @@ const Tag = styled.li<{ isChecked: boolean }>`
     props.isChecked &&
     css`
       background-color: white;
+      border: 1px solid ${props => lighten(0.35, props.theme.colors.red)};
     `}
 `
 const Blog = styled.article`
