@@ -60,7 +60,8 @@ const MarkDownContainer = styled.div`
       color: ${props => props.theme.colors.purple};
       word-break: break-all;
     }
-    b {
+    b,
+    strong {
       font-weight: bold;
     }
     li {

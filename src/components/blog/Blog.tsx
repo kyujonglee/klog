@@ -7,10 +7,7 @@ import math from "remark-math"
 import styled from "styled-components"
 import { darken } from "polished"
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
-import {
-  tomorrow,
-  duotoneSea,
-} from "react-syntax-highlighter/dist/esm/styles/prism"
+import { tomorrow } from "react-syntax-highlighter/dist/esm/styles/prism"
 
 import Layout from "../../template/Layout"
 import MarkDownContainer from "../common/MarkDownContainer"
@@ -20,14 +17,14 @@ import { Container, FlexBox } from "../common"
 import SEO from "../common/SEO"
 import { TagCss } from "../../pages/blogs"
 
-const renderers = {
+export const renderers = {
   code: ({ language, value }) => {
     if (!language) return <code>{value}</code>
     return (
       <SyntaxHighlighter
         style={tomorrow}
         language={language}
-        children={value}
+        children={value || ""}
         customStyle={{ borderRadius: "0.5rem", fontSize: "0.875rem" }}
       />
     )
