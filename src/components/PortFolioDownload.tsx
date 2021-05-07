@@ -1,7 +1,6 @@
 import { graphql, useStaticQuery } from "gatsby"
 import React from "react"
 import styled from "styled-components"
-import { isDevelopment, isProduction } from "../constants/common"
 import { formatDateForFile } from "../lib/formatters"
 
 const DOWNLOAD_NAME = `blackbell_portfolio(${formatDateForFile(new Date())})`
@@ -17,7 +16,7 @@ function PortFolioDownload() {
 
   return (
     <PortFolieDownload
-      href={isDevelopment ? publicURL : url}
+      href={publicURL || url}
       download={`${DOWNLOAD_NAME}${ext}`}
     >
       portfolio download
