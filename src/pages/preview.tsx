@@ -9,9 +9,16 @@ import MarkDownContainer from "../components/common/MarkDownContainer"
 import theme from "../styles/theme"
 import { renderers } from "../components/blog/Blog"
 import GlobalStyles from "../styles/globalStyles"
+import { isServer } from "../constants/common"
 
 function Preview() {
-  const [text, setText] = useState(localStorage.getItem("preview") || "")
+  const [text, setText] = useState("")
+
+  React.useEffect(() => {
+    if (isServer) {
+      setText(localStorage.getItem("preview"))
+    }
+  }, [setText])
 
   return (
     <ThemeProvider theme={theme}>
