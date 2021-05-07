@@ -1,21 +1,24 @@
 import { graphql, useStaticQuery } from "gatsby"
 import React from "react"
 import styled from "styled-components"
-import { isProduction } from "../constants/common"
+import { isDevelopment, isProduction } from "../constants/common"
 import { formatDateForFile } from "../lib/formatters"
 
 const DOWNLOAD_NAME = `blackbell_portfolio(${formatDateForFile(new Date())})`
 
 function PortFolioDownload() {
-  const data = useStaticQuery(query())
+  const data = useStaticQuery(query)
   const {
     portfolio: { nodes },
   } = data
+  const {
+    portfolio_file: { url, publicURL, ext },
+  } = nodes[0]
 
   return (
     <PortFolieDownload
-      href={isProduction ? nodes[0]?.file?.url : nodes[0]?.file?.publicURL}
-      download={`${DOWNLOAD_NAME}${nodes?.[0]?.file?.ext}`}
+      href={isDevelopment ? publicURL : url}
+      download={`${DOWNLOAD_NAME}${ext}`}
     >
       portfolio download
     </PortFolieDownload>
@@ -24,33 +27,19 @@ function PortFolioDownload() {
 
 export default PortFolioDownload
 
-const productionQuery = graphql`
+const query = graphql`
   query {
     portfolio: allStrapiPortfolio {
       nodes {
-        file: portfolio_file {
+        portfolio_file {
           url
           ext
-        }
-      }
-    }
-  }
-`
-
-const localQuery = graphql`
-  query {
-    portfolio: allStrapiPortfolio {
-      nodes {
-        file: portfolio_file {
           publicURL
-          ext
         }
       }
     }
   }
 `
-
-const query = () => (isProduction ? productionQuery : localQuery)
 
 const PortFolieDownload = styled.a`
   margin-top: 2rem;
