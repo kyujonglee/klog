@@ -49,3 +49,16 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 }
+
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions
+  const typeDefs = `
+    type File implements Node {
+      id: ID!
+      url: String
+      publicURL: String
+      ext: String!
+    }
+  `
+  createTypes(typeDefs)
+}
