@@ -35,7 +35,7 @@ export const query = graphql`
     portfolio: allStrapiPortfolio {
       nodes {
         file: portfolio_file {
-          publicURL
+          url
           ext
         }
       }
