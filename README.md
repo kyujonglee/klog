@@ -17,3 +17,4 @@
 - [ ] dark mode 적용시켜보기
 - [ ] top button
 - [ ] fadeInUp 효과
+- [ ] /preview TextArea tab key 적용
