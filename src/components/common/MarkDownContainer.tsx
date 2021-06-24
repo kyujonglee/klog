@@ -67,6 +67,9 @@ const MarkDownContainer = styled.div`
     li {
       list-style: inside;
       margin: 0.25rem 0;
+      ul > li {
+        margin-left: 20px;
+      }
     }
     blockquote {
       border-left: 5px solid ${props => lighten(0.2, props.theme.colors.purple)};
