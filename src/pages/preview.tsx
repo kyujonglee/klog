@@ -4,12 +4,13 @@ import styled, { ThemeProvider } from "styled-components"
 import gfm from "remark-gfm"
 import breaks from "remark-breaks"
 import math from "remark-math"
-import { SectionTitle } from "../components/common"
+import { FlexBox, SectionTitle } from "../components/common"
 import MarkDownContainer from "../components/common/MarkDownContainer"
 import theme from "../styles/theme"
 import { renderers } from "../components/blog/Blog"
 import GlobalStyles from "../styles/globalStyles"
 import { isServer } from "../constants/common"
+import PrevButton from "../components/common/PrevButton"
 
 function Preview() {
   const [text, setText] = useState("")
@@ -25,7 +26,14 @@ function Preview() {
       <GlobalStyles />
       <Wrapper>
         <Column>
-          <SectionTitle>Preview</SectionTitle>
+          <FlexBox alignItems="center" justifyContent="center">
+            <PrevButton
+              to="/"
+              style={{ alignSelf: "flex-start", marginTop: "8px" }}
+              arrowSize={"32px"}
+            />
+            <SectionTitle>Preview</SectionTitle>
+          </FlexBox>
           <Editor
             value={text}
             onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
