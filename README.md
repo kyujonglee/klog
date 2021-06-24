@@ -17,5 +17,6 @@
 - [ ] dark mode 적용시켜보기
 - [ ] top button
 - [ ] fadeInUp 효과
-- [ ] /preview TextArea tab key 적용
-  - [ ] mark down tab key 허용
+- [x] /preview TextArea tab key 적용
+  - [x] mark down tab key 허용
+- [ ] Disqus or utterances 댓글 적용
