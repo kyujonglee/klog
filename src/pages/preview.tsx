@@ -28,20 +28,30 @@ function Preview() {
           <SectionTitle>Preview</SectionTitle>
           <Editor
             value={text}
-            onChange={e => {
+            onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
               const { value } = e.target
               setText(value)
               localStorage.setItem("preview", value)
             }}
+            onKeyDown={e => {
+              if (e.key === "Tab" && !e.shiftKey) {
+                document.execCommand("insertText", false, "\t")
+                e.preventDefault()
+                return false
+              }
+            }}
           />
         </Column>
         <Column>
+          {/* https://github.com/remarkjs/react-markdown */}
+          {/* another: https://github.com/uiwjs/react-md-editor */}
           <MarkDownContainer style={{ overflowY: "auto", height: "90vh" }}>
             <ReactMarkdown
               plugins={[breaks, gfm, math]}
               renderers={renderers}
               children={text}
               allowDangerousHtml
+              unwrapDisallowed
             />
           </MarkDownContainer>
         </Column>
@@ -71,4 +81,5 @@ const Editor = styled.textarea`
   height: 90vh;
   overflow-y: auto;
   width: 100%;
+  tab-size: 32px;
 `
