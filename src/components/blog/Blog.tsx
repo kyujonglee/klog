@@ -56,8 +56,8 @@ function Blog({ location, data }) {
           <div style={{ marginLeft: "1rem" }}>
             <BlogTitle>{title}</BlogTitle>
             <FlexBox flexWrap="wrap" style={{ marginTop: "1rem" }}>
-              {tags.map(
-                tag => tag.name.trim() && <Tag key={tag.id}>{tag.name}</Tag>
+              {tags.map(tag =>
+                tag.name.trim() ? <Tag key={tag.id}>{tag.name}</Tag> : null
               )}
             </FlexBox>
           </div>
