@@ -16,6 +16,7 @@ import { Line, Title } from "../../pages/projects"
 import { Container, FlexBox } from "../common"
 import SEO from "../common/SEO"
 import { TagCss } from "../../pages/blogs"
+import Utterances from "../Utterences"
 
 export const renderers = {
   code: ({ language, value }) => {
@@ -70,6 +71,7 @@ function Blog({ location, data }) {
             />
           </MarkDownContainer>
         </Wrapper>
+        <Utterances />
       </BackWrapper>
     </Layout>
   )
