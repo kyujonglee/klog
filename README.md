@@ -19,4 +19,4 @@
 - [ ] fadeInUp 효과
 - [x] /preview TextArea tab key 적용
   - [x] mark down tab key 허용
-- [ ] Disqus or utterances 댓글 적용
+- [x] utterances 댓글 적용
