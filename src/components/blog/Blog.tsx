@@ -36,6 +36,7 @@ function Blog({ location, data }) {
   const {
     blog: { title, content, tags },
   } = data
+  console.log(tags)
   return (
     <Layout>
       <SEO
@@ -56,9 +57,7 @@ function Blog({ location, data }) {
           <div style={{ marginLeft: "1rem" }}>
             <BlogTitle>{title}</BlogTitle>
             <FlexBox flexWrap="wrap" style={{ marginTop: "1rem" }}>
-              {tags.map(tag =>
-                tag.name.trim() ? <Tag key={tag.id}>{tag.name}</Tag> : null
-              )}
+              {tags.map(tag => tag.name && <Tag key={tag.id}>{tag.name}</Tag>)}
             </FlexBox>
           </div>
           <MarkDownContainer>
