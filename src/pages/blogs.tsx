@@ -55,9 +55,8 @@ function BlogPage({ location, data }) {
     blog => {
       if (checked === ALL) return blog
       else {
-        console.log(blog.tags)
         return blog.tags.some(
-          ({ name }) => checked.toUpperCase() === name.toUpperCase()
+          ({ name }) => name && checked.toUpperCase() === name.toUpperCase()
         )
       }
     },
