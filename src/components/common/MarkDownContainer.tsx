@@ -122,6 +122,9 @@ const MarkDownContainer = styled.div`
       }
     }
   }
+  & ol > li {
+    list-style: decimal;
+  }
 `
 
 export default MarkDownContainer
