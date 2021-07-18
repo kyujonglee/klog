@@ -19,7 +19,7 @@
 - [x] utterances 댓글 적용
 - [ ] dark mode 적용시켜보기
   - light, dark
-- [ ] top button
+- [x] top button
 - [ ] fadeInUp 효과
 - [ ] react scroll indicator
   - https://michalmuszynski.com/blog/scroll-indicator-component-in-react/
