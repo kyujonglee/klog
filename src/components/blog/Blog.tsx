@@ -36,7 +36,7 @@ function Blog({ location, data }) {
   const {
     blog: { title, content, tags },
   } = data
-  console.log(tags)
+  
   return (
     <Layout>
       <SEO

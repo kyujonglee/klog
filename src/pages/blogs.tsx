@@ -19,13 +19,10 @@ function BlogPage({ location, data }) {
   } = data
 
   const [checked, setChecked] = useState(ALL)
-  const handleCheckTag = useCallback(
-    tagName => {
-      if (checked !== tagName) setChecked(tagName)
-      else setChecked(ALL)
-    },
-    [checked, setChecked]
-  )
+  const handleCheckTag = tagName => {
+    if (checked !== tagName) setChecked(tagName)
+    else setChecked(ALL)
+  }
 
   const tags = useMemo(
     () =>
@@ -44,24 +41,18 @@ function BlogPage({ location, data }) {
     [blogs]
   )
 
-  const handleFilter = useCallback(
-    tagName => () => {
-      handleCheckTag(tagName)
-    },
-    [handleCheckTag]
-  )
+  const handleFilter = tagName => () => {
+    handleCheckTag(tagName)
+  }
 
-  const filterBlogs = useCallback(
-    blog => {
-      if (checked === ALL) return blog
-      else {
-        return blog.tags.some(
-          ({ name }) => name && checked.toUpperCase() === name.toUpperCase()
-        )
-      }
-    },
-    [checked]
-  )
+  const filterBlogs = blog => {
+    if (checked === ALL) return blog
+    else {
+      return blog.tags.some(
+        ({ name }) => name && checked.toUpperCase() === name.toUpperCase()
+      )
+    }
+  }
 
   return (
     <Layout>

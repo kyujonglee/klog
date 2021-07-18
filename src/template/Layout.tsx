@@ -8,9 +8,10 @@ import Sidebar from "../components/Sidebar"
 
 function Layout({ children }) {
   const [showSidebar, setShowSidebar] = useState(false)
-  const clickSideMenu = useCallback(() => {
+  const clickSideMenu = () => {
     setShowSidebar(state => !state)
-  }, [])
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
