@@ -6,11 +6,50 @@ import { lighten } from "polished"
 import ProjectCard from "./ProjectCard"
 import ViewMore from "../../common/ViewMore"
 import { phoneMediaQuery } from "../../../styles/responsive"
+import useScrollFadeIn from "../../../hooks/useScrollFadeIn"
+
+function* createFadeOptions() {
+  let delay = 0.2,
+    count = 0,
+    interval = 0.2
+
+  const direction = "left"
+
+  while (true)
+    yield {
+      delay: delay + count++ * interval,
+      direction,
+    }
+
+  // just for type
+  return {
+    delay,
+    direction,
+  }
+}
+
+const options = createFadeOptions()
 
 function Projects() {
   const {
     allStrapiProjects: { nodes: projects },
   } = useStaticQuery(query)
+  const projectFirstElement = useScrollFadeIn<HTMLDivElement>(
+    options.next().value
+  )
+  const projectSecondElement = useScrollFadeIn<HTMLDivElement>(
+    options.next().value
+  )
+  const projectThirdElement = useScrollFadeIn<HTMLDivElement>(
+    options.next().value
+  )
+
+  const projectElement = [
+    projectFirstElement,
+    projectSecondElement,
+    projectThirdElement,
+  ]
+
   return (
     <Wrapper>
       <SectionTitle color="#63e6be">Projects</SectionTitle>
@@ -20,8 +59,12 @@ function Projects() {
         </FlexBox>
       </Container>
       <ProjectContainer>
-        {projects.map(project => (
-          <ProjectCard key={project.id} project={project} />
+        {projects.slice(0, 3).map((project, index) => (
+          <ProjectCard
+            key={project.id}
+            project={project}
+            {...projectElement[index]}
+          />
         ))}
       </ProjectContainer>
     </Wrapper>

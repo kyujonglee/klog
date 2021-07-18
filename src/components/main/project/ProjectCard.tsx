@@ -11,36 +11,38 @@ type TProjectCardProps = {
   project: Project
 }
 
-function ProjectCard({ project }: TProjectCardProps) {
-  const { image, title, subTitle, startDate, endDate, slug } = project
-  return (
-    <Wrapper>
-      <Link to={`/projects/${slug}`}>
-        <FlexBox
-          justifyContent="center"
-          style={{
-            backgroundColor: "#2e2929",
-            cursor: "pointer",
-            height: "200px",
-          }}
-        >
-          {image ? (
-            <GatsbyImage image={getImage(image)} alt="" />
-          ) : (
-            <DefaultImage />
-          )}
-        </FlexBox>
-      </Link>
-      <Content>
+const ProjectCard = React.forwardRef<HTMLDivElement, TProjectCardProps>(
+  ({ project, ...rest }, ref) => {
+    const { image, title, subTitle, startDate, endDate, slug } = project
+    return (
+      <Wrapper {...rest} ref={ref}>
         <Link to={`/projects/${slug}`}>
-          <Title>🔍 &nbsp;{title}</Title>
+          <FlexBox
+            justifyContent="center"
+            style={{
+              backgroundColor: "#2e2929",
+              cursor: "pointer",
+              height: "200px",
+            }}
+          >
+            {image ? (
+              <GatsbyImage image={getImage(image)} alt="" />
+            ) : (
+              <DefaultImage />
+            )}
+          </FlexBox>
         </Link>
-        <SubTitle>{subTitle}</SubTitle>
-        <SDate startDate={startDate} endDate={endDate} dateColor="#12b886" />
-      </Content>
-    </Wrapper>
-  )
-}
+        <Content>
+          <Link to={`/projects/${slug}`}>
+            <Title>🔍 &nbsp;{title}</Title>
+          </Link>
+          <SubTitle>{subTitle}</SubTitle>
+          <SDate startDate={startDate} endDate={endDate} dateColor="#12b886" />
+        </Content>
+      </Wrapper>
+    )
+  }
+)
 
 export default ProjectCard
 
