@@ -7,15 +7,23 @@ import { isMobile } from "react-device-detect"
 import { SectionTitle, Container, MoreButton, FlexBox } from "../common"
 import SDate from "../common/SDate"
 import CustomLinkify from "../../lib/CustomLinkify"
+import useScrollFadeIn from "../../hooks/useScrollFadeIn"
 
 const SHOW_COUNT = 3
+
+const styleMarginBottom = { marginBottom: "5px" }
 
 function Jobs() {
   const {
     allStrapiJobs: { nodes: jobs },
   } = useStaticQuery(query)
+  const fadeInElment = useScrollFadeIn({ duration: "0.5" })
   const [tab, setTab] = React.useState(0)
   const [limit, setLimit] = React.useState(SHOW_COUNT)
+
+  const showMore = jobs.length > 3 && limit === SHOW_COUNT
+  const handleShowBtn = () => setLimit(jobs.length)
+
   return (
     <Wrapper>
       <SectionTitle style={{ marginTop: isMobile ? "5px" : "0px" }}>
@@ -28,8 +36,8 @@ function Jobs() {
             .filter((_, idx) => idx < limit)
             .map(({ id, title, subTitle, startDate, endDate, desc }) => (
               <Section key={id}>
-                <Title style={{ marginBottom: "5px" }}>{title}</Title>
-                <div style={{ marginBottom: "5px" }}>
+                <Title style={styleMarginBottom}>{title}</Title>
+                <div style={styleMarginBottom}>
                   <FcCalendar style={{ marginRight: "5px" }} />
                   <span>{formatDate(new Date(startDate))}</span> ~{" "}
                   <span>{formatDate(new Date(endDate))}</span>
@@ -42,15 +50,10 @@ function Jobs() {
                 ))}
               </Section>
             ))}
-          {jobs.length > 3 && limit === SHOW_COUNT && (
-            <FlexBox
-              justifyContent="center"
-              alignItems="center"
-              style={{ margin: "10px" }}
-              onClick={() => setLimit(jobs.length)}
-            >
+          {showMore && (
+            <MoreButtonWrapper onClick={handleShowBtn}>
               <MoreButton width="150px" height="35px" />
-            </FlexBox>
+            </MoreButtonWrapper>
           )}
         </Column>
       ) : (
@@ -59,14 +62,14 @@ function Jobs() {
             {jobs.map((job, idx) => (
               <Tab
                 key={job.id}
-                onClick={() => setTab(idx)}
+                onClick={setTab.bind(null, idx)}
                 isActive={idx === tab}
               >
                 {job.title}
               </Tab>
             ))}
           </Tabs>
-          <Content>
+          <Content {...fadeInElment}>
             {jobs
               .filter((_, idx) => idx === tab)
               .map(({ id, title, subTitle, startDate, endDate, desc }) => (
@@ -147,21 +150,9 @@ const Tab = styled.li<{ isActive: boolean }>`
   margin-bottom: 0.25rem;
 `
 
-const DisplayAnimation = keyframes`
-    from {
-        opacity: 0;
-        top: -30px;
-    }
-    to {
-        opacity: 1;
-        top: 0px;
-    }
-`
-
 const Content = styled.article`
   width: 80%;
   padding-left: 20px;
-  animation: ${DisplayAnimation} 1s linear;
   position: relative;
   min-height: 50vh;
 `
@@ -228,4 +219,11 @@ const Section = styled.article`
   background-color: white;
   padding: 20px 15px 10px 15px;
   border-radius: 10px;
+`
+
+const MoreButtonWrapper = styled(FlexBox).attrs({
+  alignItems: "center",
+  justifyContent: "center",
+})`
+  margin: 10px;
 `

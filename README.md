@@ -14,9 +14,14 @@
 - [x] content중 link 있으면 regex로 parsing해서 a 태그 붙이기
 - [x] blog 페이지 filter 기능
 - [x] markdown table -> width: 100%, table-layout: fixed; 적용
-- [ ] dark mode 적용시켜보기
-- [ ] top button
-- [ ] fadeInUp 효과
 - [x] /preview TextArea tab key 적용
   - [x] mark down tab key 허용
 - [x] utterances 댓글 적용
+- [x] useCallback 불필요하게 사용한 부분 수정
+- [x] top button
+- [x] fadeInUp 효과
+- [ ] react scroll indicator
+  - https://michalmuszynski.com/blog/scroll-indicator-component-in-react/
+  - https://velog.io/@yiyb0603/React%EC%97%90%EC%84%9C-Scroll-Progressbar-%EB%A7%8C%EB%93%A4%EC%96%B4%EB%B3%B4%EA%B8%B0
+- [ ] dark mode 적용시켜보기
+  - light, dark

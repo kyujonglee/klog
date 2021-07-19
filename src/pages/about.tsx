@@ -6,8 +6,10 @@ import { graphql } from "gatsby"
 import { phoneMediaQuery } from "../styles/responsive"
 import Stack from "../components/Stack"
 import SEO from "../components/common/SEO"
+import useScrollFadeIn from "../hooks/useScrollFadeIn"
 
 function AboutPage({ location, data: { image, stacks, introduce } }) {
+  const fadeElement = useScrollFadeIn<HTMLDivElement>({ delay: 0.2 })
   return (
     <Layout>
       <SEO
@@ -28,7 +30,7 @@ function AboutPage({ location, data: { image, stacks, introduce } }) {
           <Title>about me</Title>
           <Line />
           <Content>{introduce.nodes[0].content}</Content>
-          <StackWrapper>
+          <StackWrapper {...fadeElement}>
             {stacks.nodes.map(stack => (
               <Stack key={stack.strapiId}>{stack.name}</Stack>
             ))}
