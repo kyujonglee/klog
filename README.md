@@ -20,8 +20,6 @@
 - [x] useCallback 불필요하게 사용한 부분 수정
 - [x] top button
 - [x] fadeInUp 효과
-- [ ] react scroll indicator
-  - https://michalmuszynski.com/blog/scroll-indicator-component-in-react/
-  - https://velog.io/@yiyb0603/React%EC%97%90%EC%84%9C-Scroll-Progressbar-%EB%A7%8C%EB%93%A4%EC%96%B4%EB%B3%B4%EA%B8%B0
+- [x] react scroll indicator
 - [ ] dark mode 적용시켜보기
   - light, dark
