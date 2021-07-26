@@ -123,7 +123,7 @@ const MarkDownContainer = styled.div`
     }
   }
   & ol > li {
-    list-style: decimal;
+    list-style: decimal inside;
   }
 `
 
