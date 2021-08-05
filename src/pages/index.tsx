@@ -1,12 +1,10 @@
 import React from "react"
 import LazyLoad from "react-lazyload"
 import Layout from "../template/Layout"
+import About from "../components/main/About"
+import Jobs from "../components/main/Jobs"
+import Projects from "../components/main/project/Projects"
 import SEO from "../components/common/SEO"
-import loadable from "@loadable/component"
-
-const About = loadable(() => import("../components/main/About"))
-const Jobs = loadable(() => import("../components/main/Jobs"))
-const Projects = loadable(() => import("../components/main/project/Projects"))
 
 function Home() {
   return (
