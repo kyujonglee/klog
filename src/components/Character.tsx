@@ -17,11 +17,9 @@ interface ICharacterProps {
 }
 
 const Character = ({ color }: ICharacterProps) => {
-  console.log("isMobile", isMobile)
   return (
     <Lottie
       options={defaultOptions}
-      isMobile={isMobile}
       style={{
         background:
           color ?? isMobile
