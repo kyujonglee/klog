@@ -37,7 +37,6 @@
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
     "react-icons": "^4.2.0",
-    "react-lazyload": "^3.2.0",
     "react-linkify": "^1.0.0-alpha",
     "react-lottie": "^1.2.3",
     "react-markdown": "^5.0.3",
