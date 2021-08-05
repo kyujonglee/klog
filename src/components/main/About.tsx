@@ -3,6 +3,9 @@ import styled, { css } from "styled-components"
 import { graphql, useStaticQuery } from "gatsby"
 import { phoneMediaQuery } from "../../styles/responsive"
 import Character from "../Character"
+import theme from "../../styles/theme"
+import { isMobile } from "react-device-detect"
+import { lighten } from "polished"
 
 function About() {
   const {
@@ -21,7 +24,10 @@ function About() {
           <Content>{introduces[0].content}</Content>
         </AboutContent>
         <AboutImage>
-          <Character />
+          <Character
+            // @ts-ignore
+            color={isMobile ? lighten(0.3, theme.colors.purple) : undefined}
+          />
           {/* <GatsbyImage
             style={{ borderRadius: "10px" }}
             image={getImage(image)}
