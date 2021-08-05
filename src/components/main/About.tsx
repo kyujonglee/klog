@@ -24,10 +24,7 @@ function About() {
           <Content>{introduces[0].content}</Content>
         </AboutContent>
         <AboutImage>
-          <Character
-            // @ts-ignore
-            color={isMobile ? lighten(0.3, theme.colors.purple) : undefined}
-          />
+          <Character />
           {/* <GatsbyImage
             style={{ borderRadius: "10px" }}
             image={getImage(image)}

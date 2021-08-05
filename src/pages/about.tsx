@@ -7,8 +7,6 @@ import Stack from "../components/Stack"
 import SEO from "../components/common/SEO"
 import useScrollFadeIn from "../hooks/useScrollFadeIn"
 import Character from "../components/Character"
-import { lighten } from "polished"
-import theme from "../styles/theme"
 
 function AboutPage({ location, data: { image, stacks, introduce } }) {
   const fadeElement = useScrollFadeIn<HTMLDivElement>({ delay: 0.2 })
@@ -23,7 +21,7 @@ function AboutPage({ location, data: { image, stacks, introduce } }) {
       <AboutContainer>
         <AboutImage>
           {/* @ts-ignore */}
-          <Character color={lighten(0.3, theme.colors.purple)} />
+          <Character />
         </AboutImage>
         <AboutContent>
           <Title>about me</Title>

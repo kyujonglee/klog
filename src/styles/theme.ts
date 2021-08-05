@@ -17,6 +17,7 @@ const theme: DefaultTheme = {
     red: "#E93683",
     black: "#404D59",
     lightGreen: "#c3fae8",
+    characterBackground: "#9775fa",
   },
 } as const
 
