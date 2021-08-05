@@ -1,12 +1,11 @@
 import React from "react"
 import styled, { css } from "styled-components"
 import { graphql, useStaticQuery } from "gatsby"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { phoneMediaQuery } from "../../styles/responsive"
+import Character from "../Character"
 
 function About() {
   const {
-    image,
     site: { nodes },
     introduce: { nodes: introduces },
   } = useStaticQuery(query)
@@ -22,11 +21,12 @@ function About() {
           <Content>{introduces[0].content}</Content>
         </AboutContent>
         <AboutImage>
-          <GatsbyImage
+          <Character />
+          {/* <GatsbyImage
             style={{ borderRadius: "10px" }}
             image={getImage(image)}
             alt=""
-          />
+          /> */}
         </AboutImage>
       </Container>
       <Background>

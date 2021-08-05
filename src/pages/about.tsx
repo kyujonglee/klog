@@ -1,12 +1,14 @@
 import React from "react"
 import styled, { css } from "styled-components"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Layout from "../template/Layout"
 import { graphql } from "gatsby"
 import { phoneMediaQuery } from "../styles/responsive"
 import Stack from "../components/Stack"
 import SEO from "../components/common/SEO"
 import useScrollFadeIn from "../hooks/useScrollFadeIn"
+import Character from "../components/Character"
+import { lighten } from "polished"
+import theme from "../styles/theme"
 
 function AboutPage({ location, data: { image, stacks, introduce } }) {
   const fadeElement = useScrollFadeIn<HTMLDivElement>({ delay: 0.2 })
@@ -20,11 +22,8 @@ function AboutPage({ location, data: { image, stacks, introduce } }) {
       />
       <AboutContainer>
         <AboutImage>
-          <GatsbyImage
-            style={{ borderRadius: "10px" }}
-            image={getImage(image)}
-            alt=""
-          />
+          {/* @ts-ignore */}
+          <Character color={lighten(0.3, theme.colors.purple)} />
         </AboutImage>
         <AboutContent>
           <Title>about me</Title>
