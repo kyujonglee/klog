@@ -3,6 +3,9 @@ import styled, { css } from "styled-components"
 import { graphql, useStaticQuery } from "gatsby"
 import { phoneMediaQuery } from "../../styles/responsive"
 import Character from "../Character"
+import theme from "../../styles/theme"
+import { isMobile } from "react-device-detect"
+import { lighten } from "polished"
 
 function About() {
   const {

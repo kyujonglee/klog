@@ -18,6 +18,7 @@ declare module "styled-components" {
       red: string
       black: string
       lightGreen: string
+      characterBackground: string
     }
   }
 }

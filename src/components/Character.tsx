@@ -1,7 +1,5 @@
 import React from "react"
 import Lottie from "react-lottie"
-import { isMobile } from "react-device-detect"
-import { lighten } from "polished"
 
 import animationData from "../lotties/cuty.json"
 import theme from "../styles/theme"
@@ -16,18 +14,15 @@ interface ICharacterProps {
   color?: string
 }
 
-const Character = ({ color }: ICharacterProps) => {
+const Character = ({
+  // @ts-ignore
+  color = theme.colors.characterBackground,
+}: ICharacterProps) => {
   return (
     <Lottie
       options={defaultOptions}
-      isMobile={isMobile}
       style={{
-        background: color
-          ? color
-          : isMobile
-          ? // @ts-ignore
-            lighten(0.3, theme.colors.purple)
-          : "none",
+        background: color ?? "none",
         borderRadius: "10px",
       }}
     />
