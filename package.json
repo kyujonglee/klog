@@ -10,6 +10,7 @@
     "@babel/plugin-syntax-json-strings": "^7.8.3",
     "@babel/plugin-syntax-logical-assignment-operators": "^7.10.4",
     "@babel/plugin-syntax-typescript": "^7.12.13",
+    "@loadable/component": "^5.15.0",
     "@types/react-icons": "^3.0.0",
     "@types/styled-components": "^5.1.7",
     "babel-plugin-styled-components": "^1.12.0",
