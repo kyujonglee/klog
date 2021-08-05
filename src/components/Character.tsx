@@ -17,17 +17,17 @@ interface ICharacterProps {
 }
 
 const Character = ({ color }: ICharacterProps) => {
+  console.log("isMobile", isMobile)
   return (
     <Lottie
       options={defaultOptions}
       isMobile={isMobile}
       style={{
-        background: color
-          ? color
-          : isMobile
-          ? // @ts-ignore
-            lighten(0.3, theme.colors.purple)
-          : "none",
+        background:
+          color ?? isMobile
+            ? // @ts-ignore
+              lighten(0.3, theme.colors.purple)
+            : "none",
         borderRadius: "10px",
       }}
     />
