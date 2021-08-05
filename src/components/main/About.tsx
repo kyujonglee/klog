@@ -3,9 +3,6 @@ import styled, { css } from "styled-components"
 import { graphql, useStaticQuery } from "gatsby"
 import { phoneMediaQuery } from "../../styles/responsive"
 import Character from "../Character"
-import theme from "../../styles/theme"
-import { isMobile } from "react-device-detect"
-import { lighten } from "polished"
 
 function About() {
   const {
@@ -25,11 +22,6 @@ function About() {
         </AboutContent>
         <AboutImage>
           <Character />
-          {/* <GatsbyImage
-            style={{ borderRadius: "10px" }}
-            image={getImage(image)}
-            alt=""
-          /> */}
         </AboutImage>
       </Container>
       <Background>
@@ -68,14 +60,15 @@ const Container = styled.section`
   width: 90vw;
   max-width: 1170px;
   margin: 0 auto;
-  height: 70vh;
+  min-height: 70vh;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-around;
   ${phoneMediaQuery(css`
     padding-top: 10vh;
-    height: 95vh;
+    min-height: 95vh;
+    padding-bottom: 2rem;
   `)}
 `
 const Background = styled.div`

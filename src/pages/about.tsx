@@ -20,7 +20,6 @@ function AboutPage({ location, data: { image, stacks, introduce } }) {
       />
       <AboutContainer>
         <AboutImage>
-          {/* @ts-ignore */}
           <Character />
         </AboutImage>
         <AboutContent>
