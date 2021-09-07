@@ -23,3 +23,4 @@
 - [x] react scroll indicator
 - [ ] dark mode 적용시켜보기
   - light, dark
+- [ ] SEO 보충하기
