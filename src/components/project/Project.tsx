@@ -17,6 +17,9 @@ import CustomLinkify from "../../lib/CustomLinkify"
 function Project({ location, data }) {
   const {
     project: { title, subTitle, image, stacks, endDate, startDate, desc },
+    site: {
+      siteMetadata: { siteUrl },
+    },
   } = data
   return (
     <Layout>
@@ -24,8 +27,8 @@ function Project({ location, data }) {
         url={location.pathname}
         description={subTitle}
         title={title}
-        imageUrl={image?.publicURL}
-        siteTitle={`Project | ${title}`}
+        imageUrl={siteUrl + image?.publicURL}
+        siteTitle={`${title} | Project`}
         keyword={stacks.map(stack => stack.name).join(", ")}
       />
       <Wrapper>
@@ -103,6 +106,11 @@ export const query = graphql`
       desc {
         content
         id
+      }
+    }
+    site {
+      siteMetadata {
+        siteUrl
       }
     }
   }

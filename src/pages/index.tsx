@@ -1,16 +1,15 @@
 import React from "react"
 import Layout from "../template/Layout"
-import About, { aboutQuery } from "../components/main/About"
+import About from "../components/main/About"
 import Jobs from "../components/main/Jobs"
 import Projects from "../components/main/project/Projects"
 import SEO from "../components/common/SEO"
-import { useStaticQuery } from "gatsby"
+import { graphql, useStaticQuery } from "gatsby"
 
 function Home() {
   const {
-    site: { nodes },
     introduce: { nodes: introduces },
-  } = useStaticQuery(aboutQuery)
+  } = useStaticQuery(query)
 
   return (
     <Layout>
@@ -23,3 +22,13 @@ function Home() {
 }
 
 export default Home
+
+export const query = graphql`
+  query {
+    introduce: allStrapiMainIntroduce {
+      nodes {
+        content
+      }
+    }
+  }
+`

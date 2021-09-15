@@ -7,13 +7,16 @@ import { ProjectCardDetail } from "../components/project"
 import { phoneMediaQuery } from "../styles/responsive"
 import SEO from "../components/common/SEO"
 
-function ProjectPage({ location, data: { allStrapiProjects } }) {
+function ProjectPage({ location, data: { allStrapiProjects, site } }) {
   const { nodes: projects } = allStrapiProjects
+  const {
+    siteMetadata: { siteUrl },
+  } = site
   return (
     <Layout>
       <SEO
         url={location.pathname}
-        imageUrl={projects[0].image?.publicURL}
+        imageUrl={siteUrl + projects[0].image?.publicURL}
         description={"This is my projects. Actually I did."}
         siteTitle={`Projects | Klog`}
       />
@@ -52,6 +55,11 @@ export const query = graphql`
           publicURL
         }
         slug
+      }
+    }
+    site {
+      siteMetadata {
+        siteUrl
       }
     }
   }
