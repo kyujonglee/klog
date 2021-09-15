@@ -8,7 +8,7 @@ function About() {
   const {
     site: { nodes },
     introduce: { nodes: introduces },
-  } = useStaticQuery(query)
+  } = useStaticQuery(aboutQuery)
   return (
     <>
       <Container>
@@ -31,7 +31,7 @@ function About() {
   )
 }
 
-const query = graphql`
+export const aboutQuery = graphql`
   query {
     image: file(relativePath: { eq: "background.png" }) {
       childImageSharp {
