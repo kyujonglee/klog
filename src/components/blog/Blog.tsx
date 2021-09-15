@@ -44,6 +44,7 @@ function Blog({ location, data }) {
         title={title}
         siteTitle={`Blog | ${title}`}
         keyword={tags.map(tag => tag.name).join(", ")}
+        description={content.substr(0, 100)}
       />
       <BackWrapper>
         <Wrapper>
