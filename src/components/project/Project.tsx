@@ -28,7 +28,7 @@ function Project({ location, data }) {
         description={subTitle}
         title={title}
         imageUrl={siteUrl + image?.publicURL}
-        siteTitle={`Project | ${title}`}
+        siteTitle={`${title} | Project`}
         keyword={stacks.map(stack => stack.name).join(", ")}
       />
       <Wrapper>

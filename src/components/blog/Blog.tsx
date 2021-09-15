@@ -42,7 +42,7 @@ function Blog({ location, data }) {
       <SEO
         url={location.pathname}
         title={title}
-        siteTitle={`Blog | ${title}`}
+        siteTitle={`${title} | Blog`}
         keyword={tags.map(tag => tag.name).join(", ")}
         description={content.substr(0, 100)}
       />
