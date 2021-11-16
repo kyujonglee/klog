@@ -9,6 +9,7 @@ import { phoneMediaQuery } from "../styles/responsive"
 import { FlexBox } from "../components/common"
 import { format } from "date-fns"
 import SEO from "../components/common/SEO"
+import { equalUpperCase } from "../lib/helpers"
 
 const ALL = "ALL"
 // Todo: filter 기능 (Tags로 filter)
@@ -18,21 +19,24 @@ function BlogPage({ location, data }) {
     blogs: { nodes: blogs },
   } = data
 
-  const [checked, setChecked] = useState(ALL)
-  const handleCheckTag = tagName => {
-    if (checked !== tagName) setChecked(tagName)
-    else setChecked(ALL)
+  const [checked, setChecked] = useState<string[]>([ALL])
+  const isCheckedAll = checked.length === 1 && checked.includes(ALL)
+
+  const checkTag = tagName => {
+    if (checked.includes(tagName))
+      setChecked(checked.filter(checkedTag => checkedTag !== tagName))
+    else
+      setChecked(checked => (isCheckedAll ? [tagName] : [...checked, tagName]))
   }
 
+  // 대문자, 소문자 구별없이 Tag 보여지도록 수정
   const tags = useMemo(
     () =>
       blogs.reduce((arr, { tags }) => {
         tags.forEach(tag => {
           if (
             tag.name &&
-            !arr.some(
-              ({ name }) => tag.name.toUpperCase() === name.toUpperCase()
-            )
+            !arr.some(({ name }) => equalUpperCase(tag.name, name))
           )
             arr.push(tag)
         })
@@ -42,17 +46,16 @@ function BlogPage({ location, data }) {
   )
 
   const handleFilter = tagName => () => {
-    handleCheckTag(tagName)
+    if (tagName == ALL) setChecked([ALL])
+    else checkTag(tagName)
   }
 
-  const filterBlogs = blog => {
-    if (checked === ALL) return blog
-    else {
-      return blog.tags.some(
-        ({ name }) => name && checked.toUpperCase() === name.toUpperCase()
-      )
-    }
-  }
+  const filterBlogs = blog =>
+    isCheckedAll
+      ? blog
+      : blog.tags.some(
+          ({ name }) => name && checked.includes(name.toUpperCase())
+        )
 
   return (
     <Layout>
@@ -66,15 +69,15 @@ function BlogPage({ location, data }) {
         <Line color="#ffc9c9" />
         <FlexBox flexWrap="wrap">
           {
-            <Tag onClick={handleFilter(ALL)} isChecked={checked === ALL}>
+            <Tag onClick={handleFilter(ALL)} isChecked={isCheckedAll}>
               All
             </Tag>
           }
           {tags.map(tag => (
             <Tag
               key={tag.id}
-              onClick={handleFilter(tag.name)}
-              isChecked={checked.toUpperCase() === tag.name.toUpperCase()}
+              onClick={handleFilter(tag.name.toUpperCase())}
+              isChecked={checked.includes(tag.name.toUpperCase())}
             >
               {tag.name}
             </Tag>
@@ -82,22 +85,28 @@ function BlogPage({ location, data }) {
         </FlexBox>
         <BlogContainer>
           {blogs.filter(filterBlogs).map(blog => (
-            <Blog key={blog.id}>
-              <Link to={`/blogs/${blog.slug}`}>
-                <BlogTitle>✏️ &nbsp; {blog.title}</BlogTitle>
-              </Link>
-              <FlexBox flexWrap="wrap" style={{ marginTop: "0.5rem" }}>
-                {blog.tags.map(tag => {
-                  return tag.name && <BlogTag key={tag.id}>{tag.name}</BlogTag>
-                })}
-              </FlexBox>
-              🗓
-              <SDate>{format(new Date(blog.published_at), "yyyy-MM-dd")}</SDate>
-            </Blog>
+            <BlogItem key={blog.id} blog={blog} />
           ))}
         </BlogContainer>
       </Wrapper>
     </Layout>
+  )
+}
+
+const BlogItem = ({ blog }) => {
+  return (
+    <Blog>
+      <Link to={`/blogs/${blog.slug}`}>
+        <BlogTitle>✏️ &nbsp; {blog.title}</BlogTitle>
+      </Link>
+      <FlexBox flexWrap="wrap" style={{ marginTop: "0.5rem" }}>
+        {blog.tags.map(tag => {
+          return tag.name && <BlogTag key={tag.id}>{tag.name}</BlogTag>
+        })}
+      </FlexBox>
+      🗓
+      <SDate>{format(new Date(blog.published_at), "yyyy-MM-dd")}</SDate>
+    </Blog>
   )
 }
 
