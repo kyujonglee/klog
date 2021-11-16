@@ -42,7 +42,7 @@ function Navbar({ clickSideMenu }: INavbarProps) {
   )
 }
 
-export default Navbar
+export default React.memo(Navbar)
 
 const Container = styled.div`
   width: 100%;

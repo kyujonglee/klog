@@ -1,6 +1,6 @@
 import React from "react"
 import { FcCalendar } from "react-icons/fc"
-import styled, { CSSObject } from "styled-components"
+import styled from "styled-components"
 import { formatDate } from "../../lib/formatters"
 
 type TSDateProps = {
