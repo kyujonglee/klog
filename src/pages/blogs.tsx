@@ -48,7 +48,6 @@ function BlogPage({ location, data }) {
       }, []),
     [blogs]
   )
-  console.log("tags", tags, "checked", checked)
 
   const handleFilter = tagName => () => {
     if (tagName == ALL) setChecked([ALL])
@@ -161,9 +160,9 @@ const Tag = styled.div<{ isChecked: boolean }>`
   align-items: flex-end;
   cursor: pointer;
   border: 1px solid ${props => lighten(0.35, props.theme.colors.red)};
-  &:hover {
+  /* &:hover {
     background-color: white;
-  }
+  } */
   ${props =>
     props.isChecked &&
     css`
