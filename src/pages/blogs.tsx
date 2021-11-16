@@ -48,6 +48,7 @@ function BlogPage({ location, data }) {
       }, []),
     [blogs]
   )
+  console.log("tags", tags, "checked", checked)
 
   const handleFilter = tagName => () => {
     if (tagName == ALL) setChecked([ALL])
