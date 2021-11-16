@@ -24,7 +24,11 @@ function BlogPage({ location, data }) {
 
   const checkTag = tagName => {
     if (checked.includes(tagName))
-      setChecked(checked.filter(checkedTag => checkedTag !== tagName))
+      setChecked(
+        checked.length === 1
+          ? [ALL]
+          : checked.filter(checkedTag => checkedTag !== tagName)
+      )
     else
       setChecked(checked => (isCheckedAll ? [tagName] : [...checked, tagName]))
   }
