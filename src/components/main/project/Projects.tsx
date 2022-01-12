@@ -83,8 +83,11 @@ export const query = graphql`
         subTitle
         title
         image {
-          childImageSharp {
-            gatsbyImageData(height: 200)
+          localFile {
+            childImageSharp {
+              gatsbyImageData(height: 200)
+            }
+            publicURL
           }
         }
         slug
@@ -102,10 +105,11 @@ const Wrapper = styled.div`
 
 const ProjectContainer = styled(Container)`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 20px;
   ${phoneMediaQuery(css`
-    grid-template-columns: repeat(1, minmax(300px, 400px));
+    grid-template-columns: repeat(1, minmax(260px, 400px));
     justify-content: center;
+    padding: 0.5rem;
   `)}
 `

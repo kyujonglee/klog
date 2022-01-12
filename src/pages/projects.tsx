@@ -16,7 +16,7 @@ function ProjectPage({ location, data: { allStrapiProjects, site } }) {
     <Layout>
       <SEO
         url={location.pathname}
-        imageUrl={siteUrl + projects[0].image?.publicURL}
+        imageUrl={siteUrl + projects[0].image?.localFile?.publicURL}
         description={"This is my projects. Actually I did."}
         siteTitle={`Projects | Klog`}
       />
@@ -49,10 +49,12 @@ export const query = graphql`
           id
         }
         image {
-          childImageSharp {
-            gatsbyImageData(height: 200)
+          localFile {
+            childImageSharp {
+              gatsbyImageData(height: 200)
+            }
+            publicURL
           }
-          publicURL
         }
         slug
       }

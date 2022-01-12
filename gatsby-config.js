@@ -41,7 +41,7 @@ module.exports = {
       options: {
         apiURL: process.env.GATSBY_API_URL || "http://localhost:1337",
         queryLimit: 1000, // Default to 100
-        contentTypes: [`jobs`, `stacks`, `projects`, `blogs`],
+        collectionTypes: [`jobs`, `stacks`, `projects`, `blogs`],
         singleTypes: [`main-introduce`, `about-introduce`, `portfolio`],
       },
     },
@@ -102,7 +102,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-offline`,
       options: {
-        precachePages: [`/`, `/about`, `/projects/*`, `/contact`],
+        precachePages: [`/`, `/about`, `/projects/*`, `/contact`, `/blogs/*`],
       },
     },
   ],
