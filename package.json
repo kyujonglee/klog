@@ -80,5 +80,8 @@
   },
   "bugs": {
     "url": "https://github.com/kyujonglee/klog/issues"
-  }
+  },
+  "resolutions": {
+    "webpack": "^5.66.0"
+ }
 }
