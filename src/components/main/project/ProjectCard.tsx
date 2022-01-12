@@ -26,7 +26,7 @@ const ProjectCard = React.forwardRef<HTMLDivElement, TProjectCardProps>(
             }}
           >
             {image ? (
-              <GatsbyImage image={getImage(image)} alt="" />
+              <GatsbyImage image={getImage(image.localFile)} alt="" />
             ) : (
               <DefaultImage />
             )}

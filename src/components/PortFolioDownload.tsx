@@ -11,7 +11,9 @@ function PortFolioDownload() {
     portfolio: { nodes },
   } = data
   const {
-    portfolio_file: { url, publicURL, ext },
+    portfolio_file: {
+      localFile: { url, publicURL, ext },
+    },
   } = nodes[0]
 
   return (
@@ -31,9 +33,11 @@ const query = graphql`
     portfolio: allStrapiPortfolio {
       nodes {
         portfolio_file {
-          url
-          ext
-          publicURL
+          localFile {
+            url
+            ext
+            publicURL
+          }
         }
       }
     }

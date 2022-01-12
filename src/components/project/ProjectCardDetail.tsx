@@ -4,7 +4,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import styled from "styled-components"
 import { lighten, darken } from "polished"
 
-import { Project } from "../../allTypes"
+import { Project } from "../../types"
 import { FlexBox } from "../common"
 import DefaultImage from "../common/DefaultImage"
 import SDate from "../common/SDate"
@@ -26,8 +26,8 @@ function ProjectCardDetail({ project }: TProjectCardDetailProps) {
             height: "200px",
           }}
         >
-          {image ? (
-            <GatsbyImage image={getImage(image)} alt="" />
+          {image?.localFile ? (
+            <GatsbyImage image={getImage(image.localFile)} alt="" />
           ) : (
             <DefaultImage />
           )}

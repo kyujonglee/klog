@@ -27,7 +27,7 @@ function Project({ location, data }) {
         url={location.pathname}
         description={subTitle}
         title={title}
-        imageUrl={siteUrl + image?.publicURL}
+        imageUrl={siteUrl + image?.localFile?.publicURL}
         siteTitle={`${title} | Project`}
         keyword={stacks.map(stack => stack.name).join(", ")}
       />
@@ -65,8 +65,8 @@ function Project({ location, data }) {
             </Content>
           </Column>
           <Column style={{ textAlign: "center" }}>
-            {image ? (
-              <GatsbyImage image={getImage(image)} alt="" />
+            {image?.localFile ? (
+              <GatsbyImage image={getImage(image.localFile)} alt="" />
             ) : (
               <DefaultImage
                 style={{
@@ -98,10 +98,12 @@ export const query = graphql`
         id
       }
       image {
-        childImageSharp {
-          gatsbyImageData(height: 400)
+        localFile {
+          childImageSharp {
+            gatsbyImageData(height: 400)
+          }
+          publicURL
         }
-        publicURL
       }
       desc {
         content
