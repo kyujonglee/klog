@@ -45,6 +45,7 @@ const useScrollFadeIn = <T extends HTMLElement>({
         current.style.cssText = `
         transition: all ${duration}s linear ${delay}s;
         opacity: 1;
+        transform: translate3d(0, 0, 0);
         `
       }
     },
