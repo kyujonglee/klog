@@ -7,7 +7,7 @@ import { isMobile } from "react-device-detect"
 import { SectionTitle, Container, MoreButton, FlexBox } from "../common"
 import SDate from "../common/SDate"
 import CustomLinkify from "../../lib/CustomLinkify"
-import useScrollFadeIn from "../../hooks/useScrollFadeIn"
+import { motion } from "framer-motion"
 
 const SHOW_COUNT = 3
 
@@ -17,7 +17,6 @@ function Jobs() {
   const {
     allStrapiJobs: { nodes: jobs },
   } = useStaticQuery(query)
-  const fadeInElment = useScrollFadeIn({ duration: "0.5" })
   const [tab, setTab] = React.useState(0)
   const [limit, setLimit] = React.useState(SHOW_COUNT)
 
@@ -69,7 +68,12 @@ function Jobs() {
               </Tab>
             ))}
           </Tabs>
-          <Content {...fadeInElment}>
+          <Content
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.75 }}
+            viewport={{ once: true }}
+          >
             {jobs
               .filter((_, idx) => idx === tab)
               .map(({ id, title, subTitle, startDate, endDate, desc }) => (
@@ -150,7 +154,7 @@ const Tab = styled.li<{ isActive: boolean }>`
   margin-bottom: 0.25rem;
 `
 
-const Content = styled.article`
+const Content = styled(motion.article)`
   width: 80%;
   padding-left: 20px;
   position: relative;

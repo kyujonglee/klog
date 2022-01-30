@@ -6,49 +6,12 @@ import { lighten } from "polished"
 import ProjectCard from "./ProjectCard"
 import ViewMore from "../../common/ViewMore"
 import { phoneMediaQuery } from "../../../styles/responsive"
-import useScrollFadeIn from "../../../hooks/useScrollFadeIn"
-
-function* createFadeOptions() {
-  let delay = 0.2,
-    count = 0,
-    interval = 0.2
-
-  const direction = "left"
-
-  while (true)
-    yield {
-      delay: delay + count++ * interval,
-      direction,
-    }
-
-  // just for type
-  return {
-    delay,
-    direction,
-  }
-}
-
-const options = createFadeOptions()
+import { motion } from "framer-motion"
 
 function Projects() {
   const {
     allStrapiProjects: { nodes: projects },
   } = useStaticQuery(query)
-  const projectFirstElement = useScrollFadeIn<HTMLDivElement>(
-    options.next().value
-  )
-  const projectSecondElement = useScrollFadeIn<HTMLDivElement>(
-    options.next().value
-  )
-  const projectThirdElement = useScrollFadeIn<HTMLDivElement>(
-    options.next().value
-  )
-
-  const projectElement = [
-    projectFirstElement,
-    projectSecondElement,
-    projectThirdElement,
-  ]
 
   return (
     <Wrapper>
@@ -60,11 +23,14 @@ function Projects() {
       </Container>
       <ProjectContainer>
         {projects.slice(0, 3).map((project, index) => (
-          <ProjectCard
-            key={project.id}
-            project={project}
-            {...projectElement[index]}
-          />
+          <motion.div
+            initial={{ opacity: 0, x: 100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.75 }}
+          >
+            <ProjectCard key={project.id} project={project} />
+          </motion.div>
         ))}
       </ProjectContainer>
     </Wrapper>
@@ -75,7 +41,7 @@ export default Projects
 
 export const query = graphql`
   query {
-    allStrapiProjects(sort: { order: DESC, fields: startDate }) {
+    allStrapiProjects(sort: { order: DESC, fields: startDate }, limit: 3) {
       nodes {
         id
         endDate

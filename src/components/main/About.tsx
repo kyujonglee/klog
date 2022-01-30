@@ -3,6 +3,7 @@ import styled, { css } from "styled-components"
 import { graphql, useStaticQuery } from "gatsby"
 import { phoneMediaQuery } from "../../styles/responsive"
 import Character from "../Character"
+import { motion } from "framer-motion"
 
 function About() {
   const {
@@ -12,7 +13,12 @@ function About() {
   return (
     <>
       <Container>
-        <AboutContent>
+        <AboutContent
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.75 }}
+          viewport={{ once: true }}
+        >
           <NameContainer>
             <Line />
             <Name>{nodes[0]?.siteMetadata?.author}</Name>
@@ -94,7 +100,7 @@ const AboutImage = styled.div`
     width: 100%;
   `)}
 `
-const AboutContent = styled.div`
+const AboutContent = styled(motion.div)`
   width: 50%;
   display: flex;
   flex-direction: column;
