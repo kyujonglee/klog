@@ -14,7 +14,7 @@ function Sidebar({ showSidebar, clickSideMenu }: ISidebarProps) {
   return (
     <Side showSidebar={showSidebar}>
       <SCancel onClick={clickSideMenu} />
-      <Menu>
+      <Menu onClick={clickSideMenu}>
         {links.map(link => (
           <Link to={link.url} key={link.id}>
             <MenuItem>
@@ -49,7 +49,7 @@ const Side = styled.aside<{ showSidebar: boolean }>`
       : css`
           transform: translateX(-100%);
         `}
-  transition: transform 0.2s ease-in-out;
+  transition: transform 0.5s ease-in-out;
 `
 const SCancel = styled(GiCancel)`
   align-self: flex-end;
@@ -72,7 +72,7 @@ const MenuItem = styled.li`
   align-items: flex-start;
   text-transform: capitalize;
   font-weight: 500;
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: ${props => props.theme.colors.darkBlue};
   padding: 0.25rem;
 `

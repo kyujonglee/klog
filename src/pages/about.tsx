@@ -5,11 +5,10 @@ import { graphql } from "gatsby"
 import { phoneMediaQuery } from "../styles/responsive"
 import Stack from "../components/Stack"
 import SEO from "../components/common/SEO"
-import useScrollFadeIn from "../hooks/useScrollFadeIn"
 import Character from "../components/Character"
+import { motion } from "framer-motion"
 
-function AboutPage({ location, data: { image, stacks, introduce } }) {
-  const fadeElement = useScrollFadeIn<HTMLDivElement>({ delay: 0.2 })
+function AboutPage({ location, data: { stacks, introduce } }) {
   return (
     <Layout>
       <SEO
@@ -26,11 +25,18 @@ function AboutPage({ location, data: { image, stacks, introduce } }) {
           <Title>about me</Title>
           <Line />
           <Content>{introduce.nodes[0].content}</Content>
-          <StackWrapper {...fadeElement}>
-            {stacks.nodes.map(stack => (
-              <Stack key={stack.strapiId}>{stack.name}</Stack>
-            ))}
-          </StackWrapper>
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1 }}
+          >
+            <StackWrapper>
+              {stacks.nodes.map(stack => (
+                <Stack key={stack.strapiId}>{stack.name}</Stack>
+              ))}
+            </StackWrapper>
+          </motion.div>
         </AboutContent>
       </AboutContainer>
     </Layout>
@@ -39,11 +45,6 @@ function AboutPage({ location, data: { image, stacks, introduce } }) {
 
 export const query = graphql`
   query {
-    image: file(relativePath: { eq: "background.png" }) {
-      childImageSharp {
-        gatsbyImageData(width: 800)
-      }
-    }
     stacks: allStrapiStacks {
       nodes {
         name

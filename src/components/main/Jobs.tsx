@@ -7,7 +7,7 @@ import { isMobile } from "react-device-detect"
 import { SectionTitle, Container, MoreButton, FlexBox } from "../common"
 import SDate from "../common/SDate"
 import CustomLinkify from "../../lib/CustomLinkify"
-import useScrollFadeIn from "../../hooks/useScrollFadeIn"
+import { motion } from "framer-motion"
 
 const SHOW_COUNT = 3
 
@@ -17,7 +17,6 @@ function Jobs() {
   const {
     allStrapiJobs: { nodes: jobs },
   } = useStaticQuery(query)
-  const fadeInElment = useScrollFadeIn({ duration: "0.5" })
   const [tab, setTab] = React.useState(0)
   const [limit, setLimit] = React.useState(SHOW_COUNT)
 
@@ -34,8 +33,14 @@ function Jobs() {
         <Column>
           {jobs
             .filter((_, idx) => idx < limit)
-            .map(({ id, title, subTitle, startDate, endDate, desc }) => (
-              <Section key={id}>
+            .map(({ id, title, subTitle, startDate, endDate, desc }, idx) => (
+              <Section
+                key={id}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.25 }}
+              >
                 <Title style={styleMarginBottom}>{title}</Title>
                 <div style={styleMarginBottom}>
                   <FcCalendar style={{ marginRight: "5px" }} />
@@ -43,11 +48,13 @@ function Jobs() {
                   <span>{formatDate(new Date(endDate))}</span>
                 </div>
                 <SubTitle>{subTitle}</SubTitle>
-                {desc.map(description => (
-                  <Description key={description.id}>
-                    {description.content}
-                  </Description>
-                ))}
+                <CustomLinkify>
+                  {desc.map(description => (
+                    <Description key={description.id}>
+                      {description.content}
+                    </Description>
+                  ))}
+                </CustomLinkify>
               </Section>
             ))}
           {showMore && (
@@ -69,11 +76,17 @@ function Jobs() {
               </Tab>
             ))}
           </Tabs>
-          <Content {...fadeInElment}>
+          <Content>
             {jobs
               .filter((_, idx) => idx === tab)
               .map(({ id, title, subTitle, startDate, endDate, desc }) => (
-                <div key={id}>
+                <motion.div
+                  key={id}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+                  viewport={{ once: true }}
+                >
                   <Title>
                     {title}
                     <SDate
@@ -90,7 +103,7 @@ function Jobs() {
                       </Description>
                     ))}
                   </CustomLinkify>
-                </div>
+                </motion.div>
               ))}
           </Content>
         </ContentSize>
@@ -214,7 +227,7 @@ const Column = styled.section`
   padding: 5px 10px 10px 10px;
 `
 
-const Section = styled.article`
+const Section = styled(motion.article)`
   margin-top: 1.25rem;
   background-color: white;
   padding: 20px 15px 10px 15px;
