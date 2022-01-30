@@ -49,6 +49,7 @@ export default ProjectCard
 const Wrapper = styled.article`
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   background-color: white;
+  height: 100%;
 `
 const Content = styled.div`
   padding: 1.125rem;

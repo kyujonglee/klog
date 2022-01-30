@@ -66,7 +66,7 @@ const Container = styled.section`
   width: 90vw;
   max-width: 1170px;
   margin: 0 auto;
-  min-height: 70vh;
+  min-height: 80vh;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -79,7 +79,7 @@ const Container = styled.section`
 `
 const Background = styled.div`
   width: 100%;
-  height: 70vh;
+  height: 80vh;
   position: absolute;
   top: 0;
   left: 0;
