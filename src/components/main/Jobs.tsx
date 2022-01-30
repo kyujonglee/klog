@@ -48,11 +48,13 @@ function Jobs() {
                   <span>{formatDate(new Date(endDate))}</span>
                 </div>
                 <SubTitle>{subTitle}</SubTitle>
-                {desc.map(description => (
-                  <Description key={description.id}>
-                    {description.content}
-                  </Description>
-                ))}
+                <CustomLinkify>
+                  {desc.map(description => (
+                    <Description key={description.id}>
+                      {description.content}
+                    </Description>
+                  ))}
+                </CustomLinkify>
               </Section>
             ))}
           {showMore && (
