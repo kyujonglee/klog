@@ -24,10 +24,10 @@ function Projects() {
       <ProjectContainer>
         {projects.slice(0, 3).map((project, index) => (
           <motion.div
-            initial={{ opacity: 0, x: 100 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.75 }}
+            transition={{ duration: 0.75, delay: (index + 1) * 0.25 }}
           >
             <ProjectCard key={project.id} project={project} />
           </motion.div>

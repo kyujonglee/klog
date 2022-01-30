@@ -16,7 +16,7 @@ function About() {
         <AboutContent
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.75 }}
+          transition={{ duration: 0.75, delay: 0.25 }}
           viewport={{ once: true }}
         >
           <NameContainer>
