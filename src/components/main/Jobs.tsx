@@ -33,8 +33,14 @@ function Jobs() {
         <Column>
           {jobs
             .filter((_, idx) => idx < limit)
-            .map(({ id, title, subTitle, startDate, endDate, desc }) => (
-              <Section key={id}>
+            .map(({ id, title, subTitle, startDate, endDate, desc }, idx) => (
+              <Section
+                key={id}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.25 }}
+              >
                 <Title style={styleMarginBottom}>{title}</Title>
                 <div style={styleMarginBottom}>
                   <FcCalendar style={{ marginRight: "5px" }} />
@@ -68,16 +74,17 @@ function Jobs() {
               </Tab>
             ))}
           </Tabs>
-          <Content
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.75 }}
-            viewport={{ once: true }}
-          >
+          <Content>
             {jobs
               .filter((_, idx) => idx === tab)
               .map(({ id, title, subTitle, startDate, endDate, desc }) => (
-                <div key={id}>
+                <motion.div
+                  key={id}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+                  viewport={{ once: true }}
+                >
                   <Title>
                     {title}
                     <SDate
@@ -94,7 +101,7 @@ function Jobs() {
                       </Description>
                     ))}
                   </CustomLinkify>
-                </div>
+                </motion.div>
               ))}
           </Content>
         </ContentSize>
@@ -154,7 +161,7 @@ const Tab = styled.li<{ isActive: boolean }>`
   margin-bottom: 0.25rem;
 `
 
-const Content = styled(motion.article)`
+const Content = styled.article`
   width: 80%;
   padding-left: 20px;
   position: relative;
@@ -218,7 +225,7 @@ const Column = styled.section`
   padding: 5px 10px 10px 10px;
 `
 
-const Section = styled.article`
+const Section = styled(motion.article)`
   margin-top: 1.25rem;
   background-color: white;
   padding: 20px 15px 10px 15px;
