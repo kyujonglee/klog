@@ -23,5 +23,5 @@
 - [x] react scroll indicator
 - [ ] dark mode 적용시켜보기
   - light, dark
-- [ ] SEO 보충하기
+- [x] SEO 보충하기
 - [ ] Velog 처럼 Blog Detail에 목차 만들기
